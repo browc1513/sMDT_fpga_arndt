@@ -12,19 +12,19 @@ git checkout xadc_dual
 ```
 2. Open vivado and open the XADC_DUAL.xpr under XADC_DUAL folder.
 
-![avatar](../Plots/Open.PNG)
+![avatar](Plots/Open.PNG)
 
 3. Run Synthesis and Run Implementation (click red-lined butoon in the left panel)
 
-![avatar](../Plots/SI.PNG)
+![avatar](Plots/SI.PNG)
 
 4. Connect the fpga board as shown below. The uart should be connect to PC. In the illustration Two inputs are from the wavegenerator and is connect to JA PMOD connector. Two colomns are two channels and the positive should be connected to the upper connector. Detail see: https://digilent.com/reference/programmable-logic/basys-3/demos/xadc
 
-![avatar](../Plots/Connect.jpeg)
+![avatar](Plots/Connect.jpeg)
 
 5. Make Sure JP1 is in JTAG mode and Turn on the Basys3. Generate Bitstream and program device. Click the botton as shown in the picture. 
 
-![avatar](../Plots/Hardware.PNG)
+![avatar](Plots/Hardware.PNG)
 
 6.The input signal should be between 0-1V. The LED[0-7] and LED[8-15] will shows the bit of two channel ADC.  
 
