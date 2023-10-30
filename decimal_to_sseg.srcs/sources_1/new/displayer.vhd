@@ -33,9 +33,9 @@ use IEEE.numeric_std.ALL;
 
 entity displayer is
 Port ( clk,reset  : in  std_logic;
-       in0,in1,in2,in3    : in std_logic_vector (7 downto 0);
+       in0,in1,in2,in3    : in std_logic_vector (6 downto 0);
        an                 : out std_logic_vector (3 downto 0);
-       sseg               : out std_logic_vector (7 downto 0)
+       sseg               : out std_logic_vector (6 downto 0)
       );
 end displayer;
 
