@@ -40,8 +40,10 @@ end Counter;
 
 architecture Behavioral of Counter is
     signal counter: integer:=0;
+    signal counter_out: integer:=0;
     signal in0_reg,in1_reg,in2_reg,in3_reg: unsigned (3 downto 0);
     signal edge_detect : std_logic_vector(1 downto 0);
+
     function four_bits_to_sseg
     ( 
     bits : unsigned(3 downto 0)
@@ -85,8 +87,9 @@ architecture Behavioral of Counter is
            edge_detect<=edge_detect(0) & JA;
            if edge_detect="01" then
                 counter <= counter+1;
+                counter_out<= counter_out+1; 
            end if;
-        if(counter = 10) then --10Hz
+        if(counter = 1) then --10Hz
             counter <= 0;
             in0_reg<=in0_reg+1;
             if in0_reg="1001" then

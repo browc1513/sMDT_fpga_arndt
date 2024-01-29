@@ -46,7 +46,8 @@ end Top;
 architecture Behavioral of Top is
     signal in0,in1,in2,in3 : std_logic_vector (6 downto 0);
     signal max_tick        : std_logic;
-    
+    signal counter_out     : integer:=0;
+
 begin
     signal_generate_unit: entity work.counter(Behavioral) 
     port map(
