@@ -1,5 +1,5 @@
-# SMDT_FPGA xadc_dual Branch
-This branch contains the code for the dual channel digital readout by Basys3.
+# SMDT_FPGA single_counter Branch
+This branch contains the code for the single channel readout by Basys3.
 
 ## Prerequisites
 If you are not familiar with FPGA, The tutorial branch is here for veiw.
