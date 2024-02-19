@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/research/Vivado/sMDT/sMDT.sim/sim_1/synth/func/xsim/tb_sMDT_func_synth.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'sMDT'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/research/Vivado/sMDT/sMDT.srcs/sim_1/new/tb_sMDT.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_sMDT'

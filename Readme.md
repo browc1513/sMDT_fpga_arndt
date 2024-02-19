@@ -17,3 +17,11 @@ The real counter should be the number on the display divide by 10 by default. Li
 ![avatar](Plots/Simu.JPG)
 
 Click the blue high-lighted part and drag the counter_out into the black name column. This one is the total number of event recorded. Then restart the simulation. The factor of counter is one so the real number of event is 1 times the number on the sseg.Change it to 10  before you start real test for 1 layer scintillator.
+
+## Change rate
+
+For UART, since it only contains 8 bits data(256), so don't make the signals number more than this number in one readout cycle. you can change in rate_generator line 55 for readout cycle time(10ns*number to input) and output signals number divider in Counter.vhdl line 101. 
+
+## PC interface
+
+TODO

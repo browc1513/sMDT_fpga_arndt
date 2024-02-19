@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/research/Vivado/sMDT/sMDT.sim/sim_1/synth/timing/xsim/tb_top_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Counter
+INFO: [VRFC 10-311] analyzing module Top
+INFO: [VRFC 10-311] analyzing module displayer
+INFO: [VRFC 10-311] analyzing module glbl
