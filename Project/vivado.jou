@@ -1,0 +1,81 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Mon Feb 19 21:09:00 2024
+# Process ID: 15700
+# Current directory: D:/research/git/sMDT_FPGA/Project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6552 D:\research\git\sMDT_FPGA\Project\sMDT.xpr
+# Log file: D:/research/git/sMDT_FPGA/Project/vivado.log
+# Journal file: D:/research/git/sMDT_FPGA/Project\vivado.jou
+# Running On: DESKTOP-I1FLNJP, OS: Windows, CPU Frequency: 3686 MHz, CPU Physical cores: 10, Host memory: 34137 MB
+#-----------------------------------------------------------
+start_gui
+open_project D:/research/git/sMDT_FPGA/Project/sMDT.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_top.tcl
+relaunch_sim
+run 2000 us
+run 2000 ns
+relaunch_sim
+run 2000 ns
+relaunch_sim
+relaunch_sim
+run 2000 ns
+relaunch_sim
+run 2000 ns
+relaunch_sim
+run 2000 ns
+close_sim
+launch_simulation
+launch_simulation
+source tb_top.tcl
+current_wave_config {Untitled 2}
+add_wave {{/tb_top/dut/Inst_UART_TX_CTRL/SEND}} {{/tb_top/dut/Inst_UART_TX_CTRL/DATA}} {{/tb_top/dut/Inst_UART_TX_CTRL/CLK}} {{/tb_top/dut/Inst_UART_TX_CTRL/READY}} {{/tb_top/dut/Inst_UART_TX_CTRL/UART_TX}} {{/tb_top/dut/Inst_UART_TX_CTRL/bitTmr}} {{/tb_top/dut/Inst_UART_TX_CTRL/bitDone}} {{/tb_top/dut/Inst_UART_TX_CTRL/bitIndex}} {{/tb_top/dut/Inst_UART_TX_CTRL/txBit}} {{/tb_top/dut/Inst_UART_TX_CTRL/txData}} {{/tb_top/dut/Inst_UART_TX_CTRL/txState}} {{/tb_top/dut/Inst_UART_TX_CTRL/BIT_TMR_MAX}} {{/tb_top/dut/Inst_UART_TX_CTRL/BIT_INDEX_MAX}} 
+relaunch_sim
+run 2000 ns
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+close_sim
+launch_simulation
+source tb_top.tcl
+current_wave_config {Untitled 3}
+add_wave {{/tb_top/dut/Inst_UART_TX_CTRL/SEND}} {{/tb_top/dut/Inst_UART_TX_CTRL/DATA}} {{/tb_top/dut/Inst_UART_TX_CTRL/CLK}} {{/tb_top/dut/Inst_UART_TX_CTRL/READY}} {{/tb_top/dut/Inst_UART_TX_CTRL/UART_TX}} {{/tb_top/dut/Inst_UART_TX_CTRL/bitTmr}} {{/tb_top/dut/Inst_UART_TX_CTRL/bitDone}} {{/tb_top/dut/Inst_UART_TX_CTRL/bitIndex}} {{/tb_top/dut/Inst_UART_TX_CTRL/txBit}} {{/tb_top/dut/Inst_UART_TX_CTRL/txData}} {{/tb_top/dut/Inst_UART_TX_CTRL/txState}} {{/tb_top/dut/Inst_UART_TX_CTRL/BIT_TMR_MAX}} {{/tb_top/dut/Inst_UART_TX_CTRL/BIT_INDEX_MAX}} 
+relaunch_sim
+run 2000 ns
+relaunch_sim
+relaunch_sim
+run 2000 ns
+relaunch_sim
+relaunch_sim
+run 200 us
+relaunch_sim
+run 200 us
+run 200 us
+relaunch_sim
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+relaunch_sim
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+run 200 us
+relaunch_sim
+run 2000 us
+run 2000 us

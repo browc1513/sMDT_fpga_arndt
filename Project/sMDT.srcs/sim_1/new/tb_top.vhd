@@ -71,7 +71,7 @@ process begin
     JA <= '1';
      wait for 10ns;
     JA <= '0';
-      wait for 1000ns;
+      wait for 100000ns;
     JA <= '1';
      wait for 10ns;
     JA <= '0';
@@ -79,7 +79,15 @@ process begin
     JA <= '1';
      wait for 10ns;
     JA <= '0';
-      wait;
+    wait for 2000000ns;
+    JA <= '1';
+     wait for 10ns;
+    JA <= '0';
+     wait for 116ns;
+    JA <= '1';
+     wait for 10ns;
+    JA <= '0';
+    wait;
 
 end process stimulus;
 

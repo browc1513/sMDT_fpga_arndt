@@ -53,6 +53,7 @@ architecture Behavioral of Top is
     signal uartRdy : std_logic;
     signal reach_cycle : std_logic;
     signal counter_out : std_logic_vector (7 downto 0):= "00000000";
+
 component UART_TX_CTRL
 Port(
 	SEND : in std_logic;
@@ -80,7 +81,7 @@ begin
     rate_generator_unit: entity work.rate_generator(arch) 
     port map(
     clk=>clk, reset=>reset, input_reg=>counter_out,
-    m_tick=>uartSend, output_reg=>uartData );
+    m_tick=>uartSend, output_reg=>uartData);
 
     
     --Component used to send a byte of data over a UART line.

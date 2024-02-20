@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/research/Vivado/sMDT/sMDT.runs/synth_1'
+HD_PWD='D:/research/git/sMDT_FPGA/Project/sMDT.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

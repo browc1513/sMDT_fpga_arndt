@@ -20,7 +20,12 @@ Click the blue high-lighted part and drag the counter_out into the black name co
 
 ## Change rate
 
-For UART, since it only contains 8 bits data(256), so don't make the signals number more than this number in one readout cycle. you can change in rate_generator line 55 for readout cycle time(10ns*number to input) and output signals number divider in Counter.vhdl line 101. 
+![avatar](Plots/Rate.JPG)
+
+For UART, if using 9600 bauds, Actual byte duration bit duration is 1041.67 $\mu s$, chage the  rate_generator line 55(default is 2000 $\mu s$) so readout cycle time is larger than this.
+
+Also since it only contains 8 bits data(256), so don't make the signals number more than this number in one readout cycle. you can change in rate_generator line 55 for readout cycle time(10ns*number to input) and output signals number divider in Counter.vhdl line 101. 
+The 
 
 ## PC interface
 
