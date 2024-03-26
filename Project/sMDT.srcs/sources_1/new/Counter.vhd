@@ -42,6 +42,8 @@ end Counter;
 architecture Behavioral of Counter is
     signal counter: integer:=0;
     signal counter_reg: integer:=0;
+    signal counter_idle: integer:=0;
+    signal idle: std_logic:= '0';
     signal counter_out_reg: std_logic_vector(7 downto 0) := (others => '0');
     signal in0_reg,in1_reg,in2_reg,in3_reg: unsigned (3 downto 0);
     signal edge_detect : std_logic_vector(1 downto 0);
@@ -93,16 +95,25 @@ architecture Behavioral of Counter is
 
         elsif rising_edge(clk) then
            edge_detect<=edge_detect(0) & JA;
-           if edge_detect="01" then
+           if edge_detect="01" and idle = '0' then
                 counter <= counter+1;
                 counter_reg<= counter_reg+1;
-           end if;
+                idle<='1';
+            end if;
+            
+            if idle='1' then
+                counter_idle<= counter_idle+1;
+                if counter_idle=10000 then
+                    counter_idle <=0;
+                    idle<='0';
+                end if;
+             end if;                               
            
         if(counter = 1) then --10Hz for one layer, 1Hz for simulation , 100HZ for readout
             counter_out_reg<= std_logic_vector( unsigned(counter_out_reg) + 1 );
             counter_out <= std_logic_vector( unsigned(counter_out_reg) + 1 );
             counter <= 0;
-
+            
             in0_reg<=in0_reg+1;
             if in0_reg="1001" then
                 in0_reg<=(others=>'0');
