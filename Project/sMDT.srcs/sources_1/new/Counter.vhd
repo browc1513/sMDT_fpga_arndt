@@ -33,7 +33,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity Counter is
     Port 
-    ( clk, reset, JA, reach_cycle : in std_logic;
+    ( clk, reset, reach_cycle : in std_logic;
+      JA : in std_logic_vector(2 downto 0);
       in0,in1,in2,in3 : out std_logic_vector(6 downto 0);
       counter_out :  out std_logic_vector(7 downto 0)
     );
@@ -42,11 +43,16 @@ end Counter;
 architecture Behavioral of Counter is
     signal counter: integer:=0;
     signal counter_reg: integer:=0;
-    signal counter_idle: integer:=0;
-    signal idle: std_logic:= '0';
+    signal counter_idle0: integer:=0;
+    signal counter_idle1: integer:=0;
+    signal idle0: std_logic:= '0';
+    signal idle1: std_logic:='0';
     signal counter_out_reg: std_logic_vector(7 downto 0) := (others => '0');
     signal in0_reg,in1_reg,in2_reg,in3_reg: unsigned (3 downto 0);
-    signal edge_detect : std_logic_vector(1 downto 0);
+    signal edge_detect_0 : std_logic_vector(1 downto 0);
+    signal edge_detect_1 : std_logic_vector(1 downto 0);
+    signal edge_detect_2 : std_logic_vector(1 downto 0); 
+
     function four_bits_to_sseg
     ( 
     bits : unsigned(3 downto 0)
@@ -89,25 +95,39 @@ architecture Behavioral of Counter is
            in1_reg<=(others=>'0');
            in2_reg<=(others=>'0');
            in3_reg<=(others=>'0');
-           edge_detect<=(others=>'0');
+           edge_detect_0<=(others=>'0');
+           edge_detect_1<=(others=>'0');
            counter_out_reg<=(others=>'0');
            counter_out<=(others=>'0');
 
         elsif rising_edge(clk) then
-           edge_detect<=edge_detect(0) & JA;
-           if edge_detect="01" and idle = '0' then
-                counter <= counter+1;
-                counter_reg<= counter_reg+1;
-                idle<='1';
-            end if;
-            
-            if idle='1' then
-                counter_idle<= counter_idle+1;
-                if counter_idle=10000 then
-                    counter_idle <=0;
-                    idle<='0';
+           edge_detect_0<=edge_detect_0(0) & JA(0);
+           edge_detect_1<=edge_detect_1(0) & JA(1);
+           if edge_detect_0="01" and edge_detect_1="01" and idle0 = '0' then
+                edge_detect_2<=edge_detect_2(0) & JA(2);
+                if edge_detect_2="01" then
+                    counter <= counter+1;
+                    counter_reg<= counter_reg+1;
+                    idle1<='1';
                 end if;
-             end if;                               
+                idle0<='1';
+           end if;
+            
+            if idle1='1' then
+                counter_idle1<= counter_idle1+1;
+                if counter_idle1=10000 then
+                    counter_idle1 <=0;
+                    idle0<='0';
+                end if;
+             end if;    
+             
+            if idle0='1' then
+                counter_idle0<= counter_idle0+1;
+                if counter_idle0=10000 then
+                    counter_idle0 <=0;
+                    idle0<='0';
+                end if;
+             end if;                              
            
         if(counter = 1) then --10Hz for one layer, 1Hz for simulation , 100HZ for readout
             counter_out_reg<= std_logic_vector( unsigned(counter_out_reg) + 1 );

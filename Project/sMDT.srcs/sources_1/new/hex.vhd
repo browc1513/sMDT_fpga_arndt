@@ -37,7 +37,8 @@ entity Top is
     DVSR_BIT: integer:=10
   );
   Port (
-   clk, reset, JA :in std_logic;
+   clk, reset : in std_logic;
+   JA         : in std_logic_vector(2 downto 0);
    an         : out std_logic_vector (3 downto 0);
    sseg       : out std_logic_vector (6 downto 0);
    tx         : out std_logic

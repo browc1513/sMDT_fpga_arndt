@@ -3,12 +3,12 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Tue Feb 20 00:49:40 2024
-# Process ID: 8332
-# Current directory: D:/research/git/sMDT_FPGA/Project/sMDT.runs/synth_1
+# Start of session at: Wed Apr  3 14:09:49 2024
+# Process ID: 9364
+# Current directory: C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.runs/synth_1
 # Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
-# Log file: D:/research/git/sMDT_FPGA/Project/sMDT.runs/synth_1/Top.vds
-# Journal file: D:/research/git/sMDT_FPGA/Project/sMDT.runs/synth_1\vivado.jou
-# Running On: DESKTOP-I1FLNJP, OS: Windows, CPU Frequency: 3686 MHz, CPU Physical cores: 10, Host memory: 34137 MB
+# Log file: C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.runs/synth_1/Top.vds
+# Journal file: C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.runs/synth_1\vivado.jou
+# Running On: DESKTOP-GTVMKSG, OS: Windows, CPU Frequency: 1992 MHz, CPU Physical cores: 4, Host memory: 17032 MB
 #-----------------------------------------------------------
 source Top.tcl -notrace

@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:D:/research/git/sMDT_FPGA/Project/sMDT.srcs/constrs_1/new/b3.xdc rfile:../../../sMDT.srcs/constrs_1/new/b3.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:{C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.srcs/constrs_1/new/b3.xdc} rfile:../../../sMDT.srcs/constrs_1/new/b3.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:7 export:INPUT save:INPUT read:READ} [current_design]
 set_property  PACKAGE_PIN W5        [get_ports clk]
 set_property src_info {type:XDC file:1 line:12 export:INPUT save:INPUT read:READ} [current_design]
@@ -26,6 +26,10 @@ set_property -dict { PACKAGE_PIN V4   IOSTANDARD LVCMOS33 } [get_ports {an[2]}]
 set_property src_info {type:XDC file:1 line:63 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN W4   IOSTANDARD LVCMOS33 } [get_ports {an[3]}]
 set_property src_info {type:XDC file:1 line:75 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN J1 IOSTANDARD LVCMOS33} [get_ports {JA}]
+set_property -dict { PACKAGE_PIN J1 IOSTANDARD LVCMOS33} [get_ports {JA[0]}]
+set_property src_info {type:XDC file:1 line:76 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN L2   IOSTANDARD LVCMOS33 } [get_ports {JA[1]}];#Sch name = JA2
+set_property src_info {type:XDC file:1 line:77 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN J2   IOSTANDARD LVCMOS33 } [get_ports {JA[2]}];#Sch name = JA3
 set_property src_info {type:XDC file:1 line:134 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN A18   IOSTANDARD LVCMOS33 } [get_ports tx]
