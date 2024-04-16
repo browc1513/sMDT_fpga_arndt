@@ -100,6 +100,7 @@ architecture Behavioral of Counter is
            counter_out_reg<=(others=>'0');
            counter_out<=(others=>'0');
 
+        -- If scintillators detect particles, record count
         elsif rising_edge(clk) then
            edge_detect_0<=edge_detect_0(0) & JA(0);
            edge_detect_1<=edge_detect_1(0) & JA(1);
@@ -113,9 +114,10 @@ architecture Behavioral of Counter is
                 idle0<='1';
            end if;
             
+            --Idle signals used to introduce dead time before counts begin. Periodic after pulses from cosmic rays filtered out
             if idle1='1' then
                 counter_idle1<= counter_idle1+1;
-                if counter_idle1=10000 then
+                if counter_idle1=40000 then
                     counter_idle1 <=0;
                     idle0<='0';
                 end if;
@@ -129,7 +131,7 @@ architecture Behavioral of Counter is
                 end if;
              end if;                              
            
-        if(counter = 1) then --10Hz for one layer, 1Hz for simulation , 100HZ for readout
+        if(counter = 1) then --Change to 10Hz for one layer, 1Hz for simulation , 100HZ for readout
             counter_out_reg<= std_logic_vector( unsigned(counter_out_reg) + 1 );
             counter_out <= std_logic_vector( unsigned(counter_out_reg) + 1 );
             counter <= 0;
