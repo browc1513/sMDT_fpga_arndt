@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.runs/synth_1/Top.tcl"
+  variable script "C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.runs/synth_1/Top.tcl"
   variable category "vivado_synth"
 }
 
@@ -76,20 +76,20 @@ create_project -in_memory -part xc7a35tcpg236-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir {C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.cache/wt} [current_project]
-set_property parent.project_path {C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.xpr} [current_project]
+set_property webtalk.parent_dir C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.cache/wt [current_project]
+set_property parent.project_path C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo {c:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.cache/ip} [current_project]
+set_property ip_output_repo c:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  {C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/Counter.vhd}
-  {C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/UART_TX_CTRL.vhd}
-  {C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/display.vhd}
-  {C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/rate_generator.vhd}
-  {C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/hex.vhd}
+  C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/Counter.vhd
+  C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/UART_TX_CTRL.vhd
+  C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/display.vhd
+  C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/rate_generator.vhd
+  C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.srcs/sources_1/new/hex.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -100,12 +100,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.srcs/constrs_1/new/b3.xdc}}
-set_property used_in_implementation false [get_files {{C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.srcs/constrs_1/new/b3.xdc}}]
+read_xdc C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.srcs/constrs_1/new/b3.xdc
+set_property used_in_implementation false [get_files C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.srcs/constrs_1/new/b3.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental {C:/Users/Colin Bare/Documents/GitHub/sMDT_FPGA/Project/sMDT.srcs/utils_1/imports/synth_1/Decimal_Displayer.dcp}
+read_checkpoint -auto_incremental -incremental C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.srcs/utils_1/imports/synth_1/Decimal_Displayer.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
