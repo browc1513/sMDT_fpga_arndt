@@ -106,30 +106,31 @@ architecture Behavioral of Counter is
            edge_detect_1<=edge_detect_1(0) & JA(1);
            if edge_detect_0="01" and edge_detect_1="01" and idle0 = '0' then
                 edge_detect_2<=edge_detect_2(0) & JA(2);
-                if edge_detect_2="01" then
+                if edge_detect_2="01" and idle1 = '0' then
                     counter <= counter+1;
                     counter_reg<= counter_reg+1;
-                    idle1<='1';
+                    idle1 <= '1';
                 end if;
-                idle0<='1';
+                idle0 <= '1';
            end if;
             
             --Idle signals used to introduce dead time before counts begin. Periodic after pulses from cosmic rays filtered out
             if idle1='1' then
                 counter_idle1<= counter_idle1+1;
-                if counter_idle1=40000 then
+                if counter_idle1=400 then
                     counter_idle1 <=0;
-                    idle0<='0';
+                    idle1<='0';
                 end if;
              end if;    
              
             if idle0='1' then
                 counter_idle0<= counter_idle0+1;
-                if counter_idle0=10000 then
+                if counter_idle0=100 then
                     counter_idle0 <=0;
                     idle0<='0';
                 end if;
-             end if;                              
+             end if; 
+                                        
            
         if(counter = 1) then --Change to 10Hz for one layer, 1Hz for simulation , 100HZ for readout
             counter_out_reg<= std_logic_vector( unsigned(counter_out_reg) + 1 );

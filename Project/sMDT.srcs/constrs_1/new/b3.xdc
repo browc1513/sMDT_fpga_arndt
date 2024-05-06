@@ -9,7 +9,7 @@ set_property  IOSTANDARD LVCMOS33   [get_ports clk]
 create_clock -name clk -period 10.00 -waveform {0 5}  -add [get_ports clk]
 
 ## switches
-set_property -dict { PACKAGE_PIN V17   IOSTANDARD LVCMOS33 } [get_ports {reset}] # setting reset switch as pin V17 on FPGA board (far-right)
+set_property -dict { PACKAGE_PIN V17   IOSTANDARD LVCMOS33 } [get_ports {reset}] 
 #set_property -dict { PACKAGE_PIN V16   IOSTANDARD LVCMOS33 } [get_ports {sw[1]}]
 #set_property -dict { PACKAGE_PIN W16   IOSTANDARD LVCMOS33 } [get_ports {sw[2]}]
 #set_property -dict { PACKAGE_PIN W17   IOSTANDARD LVCMOS33 } [get_ports {sw[3]}]
