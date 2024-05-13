@@ -65,16 +65,6 @@ Port(
 	);
 end component;
 
-component UART_RX_CTRL
-Port(
-	SEND : in std_logic;
-	DATA : in std_logic_vector(7 downto 0);
-	CLK : in std_logic;          
-	READY : out std_logic;
-	UART_RX : out std_logic
-	);
-end component;
-
 begin
     signal_generate_unit: entity work.counter(Behavioral) 
     port map(
@@ -105,15 +95,6 @@ begin
         );
     
     tx <= uartTX;
-    
-    Inst_UART_RX_CTRL: UART_RX_CTRL port map(
-            SEND => uartSend,
-            DATA => uartData,
-            CLK => CLK,
-            READY => uartRdy
-            --UART_RX => uartRX
-        );
-    
-    --rx <= uartRX;
+   
 
 end Behavioral;
