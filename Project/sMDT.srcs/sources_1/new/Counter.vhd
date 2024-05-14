@@ -60,7 +60,7 @@ architecture Behavioral of Counter is
      return std_logic_vector is 
      variable sseg_tem: std_logic_vector(6 downto 0);
      begin
-            case bits is
+            case bits is -- Key for displaying bits as counts on the seven segment display
             when "0000" => sseg_tem := "1000000"; -- "0"     
             when "0001" => sseg_tem := "1111001"; -- "1" 
             when "0010" => sseg_tem := "0100100"; -- "2" 
@@ -137,6 +137,8 @@ architecture Behavioral of Counter is
             counter_out <= std_logic_vector( unsigned(counter_out_reg) + 1 );
             counter <= 0;
             
+            
+            -- Ensures single digit values for each digit of the display [doesn't display past 9]
             in0_reg<=in0_reg+1;
             if in0_reg="1001" then
                 in0_reg<=(others=>'0');
@@ -160,6 +162,8 @@ architecture Behavioral of Counter is
            end if;
 
        end process;
+       
+       -- Converting the four bit characters to the display
        in0<=four_bits_to_sseg(in0_reg);
        in1<=four_bits_to_sseg(in1_reg);
        in2<=four_bits_to_sseg(in2_reg);
