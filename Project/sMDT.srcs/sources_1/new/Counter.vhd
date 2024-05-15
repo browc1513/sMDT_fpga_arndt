@@ -132,7 +132,7 @@ architecture Behavioral of Counter is
              end if; 
                                         
            
-        if(counter = 1) then --Change to 10Hz for one layer, 1Hz for simulation , 100HZ for readout
+        if(counter = 1) then --CHANGE BEFORE REAL TEST: 10Hz for one layer, 1Hz for simulation , 100HZ for readout
             counter_out_reg<= std_logic_vector( unsigned(counter_out_reg) + 1 );
             counter_out <= std_logic_vector( unsigned(counter_out_reg) + 1 );
             counter <= 0;

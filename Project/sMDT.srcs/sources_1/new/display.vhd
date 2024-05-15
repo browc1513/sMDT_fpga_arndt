@@ -63,19 +63,19 @@ begin
         case sel is
             when"00"=> 
                 sseg <= in0;
-                an<="1110";
+                an<="1110"; --14
             when"01"=> 
                 sseg <= in1;
-                an<="1101";
+                an<="1101"; -- 13
             when "10"=> 
                 sseg <= in2;
-                an<="1011";
+                an<="1011"; -- 11
             when "11"=> 
                 sseg <= in3;
-                an<="0111";
+                an<="0111"; -- 7
             when others => 
                 sseg <= in0;
-                an<="1110";
+                an<="1110"; -- 14
         end case;
     end process;
 

@@ -8,7 +8,7 @@ If you are not familiar with FPGA, The tutorial branch is here for view.
 
 Here is a brief description of all of the design files. 
 
-    TOP file: hex.vhd - brings all of the design files together. <ins> Many edits made in design files will also require edits to this file. <ins>
+    TOP file: hex.vhd - connects all of the design files to the outside world. <ins> Many edits made in design files will also require edits to this file. <ins>
     counter.vhd - Contains the logic for the coincidence counter
     displayer.vhd - Contains the code for the seven segment display controls
     UART_TX_CTRL.vhd - Contains the data transmitter logic
@@ -30,13 +30,15 @@ Connect the fpga board as shown below. JA port is connected with the digital out
 
 ![avatar](Plots/Connect.jpeg)
 
-The real counter should be the number on the display divide by 10 by default. Line 89 of counter.vhdl is the setting of divider and can be set to any value based on the signal rate.  
+The real counter should be the number on the display divide by 10 by default. Line 135 of counter.vhdl is the setting of divider and can be set to any value based on the signal rate.  
+
+## Listed below are the pieces of code that still need further attention and development
 
 ## Simulation:
 
 ![avatar](Plots/Simu.JPG)
 
-I believe the simulation file, tb_top.vhd, is incomplete, and as such, can't discern much from running a behavioral simulation whether it is working or not, until a completed file exists. Will work on testbench development. 
+The simulation file, tb_top.vhd, is incomplete, and as such, we can't discern much from running a behavioral simulation whether it is working or not, until a completed file exists. When it is complete, here is how to use it: 
 
 Click the blue high-lighted part and drag the counter_out into the black name column. This one is the total number of event recorded. Then restart the simulation. The factor of counter is one so the real number of event is 1 times the number on the sseg.Change it to 10  before you start real test for 1 layer scintillator.
 
@@ -44,16 +46,13 @@ Click the blue high-lighted part and drag the counter_out into the black name co
 
 ![avatar](Plots/Rate.JPG)
 
-Two files associated with UART:
-    - UART_TX_CTRL (Transmitter)
-    - UART_RX_CTRL (Receiver) 
-A system for transmitting the event data bit-by-bit ("0" or "1") 
-Each data byte contains a start bit, 8 data bits, and a stop bit
+Only one file is associated with UART in this project (other than the top file):
+    - UART_TX_CTRL (Transmitter) 
+A system for transmitting the event data bit-by-bit ("0" or "1"). We want to read in data as events to the computer, to be outputed into txt files (for now, may wanna make a spectrum later). Txt files should contain trigger time, arrival time. 
 
-For UART, if using 9600 bauds, Actual byte duration bit duration is 1041.67 $\mu s$, chage the  rate_generator line 55(default is 2000 $\mu s$) so readout cycle time is larger than this.
+We do not need to define the receiveing port (RX) since we do not need the FPGA to receive data from the PC
+Each databus contains a start bit, 8 data bits, and a stop bit
 
-Also since it only contains 8 bits data(256), so don't make the signals number more than this number in one readout cycle. you can change in rate_generator line 55 for readout cycle time(10ns*number to input) and output signals number divider in Counter.vhdl line 101.
+For UART, if using 9600 bauds, Actual byte duration bit duration is 1041.67 $\mu s$, chage the  rate_generator line 68(default is 2000 $\mu s$) so readout cycle time is larger than this.
 
-## Graphical User Interface (GUI)
-
-To do, display data readout from FPGA, transmitted by the UART. Expected output is a spectrum of events? Graphed as a wave?
+Also since it only contains 8 bits data(256), so don't make the signals number more than this number in one readout cycle. you can change in rate_generator line 68 for readout cycle time(10ns*number to input) and output signals number divider in Counter.vhdl line 135.
