@@ -43,6 +43,7 @@ architecture Behavioral of tb_top is
   signal tx     : std_logic := '0';
   signal edge_detect_0 : std_logic_vector(1 downto 0) := (others => '0');
   signal edge_detect_1: std_logic_vector(1 downto 0) := (others => '0');
+  signal edge_detect_2: std_logic_vector(1 downto 0) := (others => '0');
 begin
     clk <= not clk after 5 ns;
 
@@ -63,6 +64,7 @@ process begin
     JA(2) <= '1';
     edge_detect_0(0) <= '0';
     edge_detect_1(0) <= '0';
+    edge_detect_2(0) <= '0';
      wait for 10ns;
     JA(0) <= '0';
     JA(1) <= '0';
