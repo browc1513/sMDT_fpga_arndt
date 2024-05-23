@@ -53,14 +53,14 @@ architecture Behavioral of Counter is
     signal edge_detect_1 : std_logic_vector(1 downto 0);
     signal edge_detect_2 : std_logic_vector(1 downto 0); 
 
-    function four_bits_to_sseg
+    function four_bits_to_sseg 
     ( 
     bits : unsigned(3 downto 0)
     )
      return std_logic_vector is 
      variable sseg_tem: std_logic_vector(6 downto 0);
      begin
-            case bits is -- Key for displaying bits as counts on the seven segment display
+            case bits is -- Key for displaying counts on the seven segment display [four-bit character key in comments below]
             when "0000" => sseg_tem := "1000000"; -- "0"     
             when "0001" => sseg_tem := "1111001"; -- "1" 
             when "0010" => sseg_tem := "0100100"; -- "2" 
@@ -97,6 +97,7 @@ architecture Behavioral of Counter is
            in3_reg<=(others=>'0');
            edge_detect_0<=(others=>'0');
            edge_detect_1<=(others=>'0');
+           edge_detect_2<=(others=>'0');
            counter_out_reg<=(others=>'0');
            counter_out<=(others=>'0');
 
