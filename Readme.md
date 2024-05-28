@@ -26,7 +26,7 @@ There is only one constraint file for this project: b3.xdc. This file most direc
 
 ## Running
 
-Connect the FPGA board as shown below. JA port is connected with the digital output. WARNING: Input voltage should be 3.3V
+Connect the FPGA board as shown below. JA port is connected with the scintillators. We write code to connect that to the serial output, in the form of the various digital circuits (vhd files) that we've written. WARNING: Input voltage should be 3.3V
 
 ![avatar](Plots/Connect.jpeg)
 
@@ -38,23 +38,23 @@ The real counter should be the number on the display divide by 10 by default. Li
 
 ![avatar](Plots/Simu.JPG)
 
-The basic idea of a Vivado behavioral simulation is to instantiate an instance of your design, and test its functionality before writing the design to FPGA. A mostly complete simulation file exists in the simulation sources of our project: tb_top.vhd. The tb here stands for test bench, and many developers will refer to it this way. The output of the simulation file is a waveform: a display that keeps track of the changing signals across the module [changes from 0 to 1, interpreting bit-strings as numbers, etc.] The purpose of this functionality is to manually change the inputs of the circuit, to see if the behavioral simulation produces the correct output. In essence, this is a nice way to tell if your code is working as intended.
+The basic idea of a Vivado behavioral simulation is to instantiate an instance of our design, and test its functionality before writing the design to FPGA. A mostly complete simulation file exists in the simulation sources of our project: tb_top.vhd. The tb here stands for test bench, and many developers will refer to it this way. The output of the simulation file is a waveform: a display that keeps track of the changing signals across the module [changes from 0 to 1, interpreting bit-strings as numbers, etc.] The purpose of this functionality is to manually change the inputs of the circuit, to see if the behavioral simulation produces the correct output. In essence, this is a nice way to tell if your code is working as intended.
 
 Click the blue high-lighted part and drag the counter_out into the black name column. This one is the total number of event recorded. Then restart the simulation. The factor of counter is one so the real number of event is 1 times the number on the sseg.Change it to 10  before you start real test for 1 layer scintillator.
 
-The process outlined above is not working at the moment. The counter_out signal is not updating in the vivado behavioral simulation. Must be an error in the simulation file, since we can prove it does in fact update the counts when actually connected.
+The process outlined above is not working at the moment. The counter_out signal is not updating in the vivado behavioral simulation. Must be an error in the simulation file, since we can prove it does in fact update the counts when actually connected. I have also notice tx seems to be 1 the entire time. The simulation meets the condition to change tx to 1 instantly, but it never turns to 0 again (where it was initialized).
 
 ## Universal Asynchronous Receiver/Transmitter (UART)
 
 ![avatar](Plots/Rate.JPG)
 
-Only one file is associated with UART in this project (other than the top file):
+Two files are associated with UART in this project (other than the top file):
     - UART_TX_CTRL (Transmitter)
+    - UART_RX_CTRL (Receiver)
 A system for transmitting the event data bit-by-bit ("0" or "1"). We want to read in data as events to the computer, to be outputed into txt files (for now, may wanna make a spectrum later). Txt files should contain trigger time, arrival time.
 
-We do not need to define the receiveing port (RX) since we do not need the FPGA to receive data from the PC
 Each databus contains a start bit, 8 data bits, and a stop bit
 
 For UART, if using 9600 bauds, Actual byte duration bit duration is 1041.67 $\mu s$, chage the  rate_generator line 68(default is 2000 $\mu s$) so readout cycle time is larger than this.
 
-Also since it only contains 8 bits data(256), so don't make the signals number more than this number in one readout cycle. you can change in rate_generator line 68 for readout cycle time(10ns*number to input) and output signals number divider in Counter.vhdl line 135.
+Also since it only contains 8 bits data(256), so don't make the signals number more than this number in one readout cycle. you can change in rate_generator line 68 for readout cycle time(10ns*number to input) and output signals number divider in counter.vhdl line 135.
