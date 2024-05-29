@@ -33,10 +33,11 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity Counter is
     Port 
-    ( clk, reset, reach_cycle : in std_logic;
+    ( clk, reset : in std_logic;
+      reach_cycle : in std_logic := '0';
       JA : in std_logic_vector(2 downto 0);
       in0,in1,in2,in3 : out std_logic_vector(6 downto 0);
-      counter_out :  out std_logic_vector(7 downto 0)
+      counter_out :  out std_logic_vector(7 downto 0):= (others => '0')
     );
 end Counter;
 
@@ -47,7 +48,7 @@ architecture Behavioral of Counter is
     signal counter_idle1: integer:=0;
     signal idle0: std_logic:= '1';
     signal idle1: std_logic:='1';
-    signal counter_out_reg: std_logic_vector(7 downto 0) := (others => '0');
+    signal counter_out_reg: unsigned(7 downto 0) := (others => '0');
     signal in0_reg,in1_reg,in2_reg,in3_reg: unsigned (3 downto 0);
     signal edge_detect_0 : std_logic_vector(1 downto 0);
     signal edge_detect_1 : std_logic_vector(1 downto 0);
@@ -134,8 +135,8 @@ architecture Behavioral of Counter is
                                         
            
         if(counter = 1) then --CHANGE BEFORE REAL TEST: 10Hz for one layer, 1Hz for simulation , 100HZ for readout
-            counter_out_reg<= std_logic_vector( unsigned(counter_out_reg) + 1 );
-            counter_out <= std_logic_vector( unsigned(counter_out_reg) + 1 );
+            counter_out_reg<= ( counter_out_reg + 1 );
+            counter_out <= std_logic_vector( counter_out_reg + 1 );
             counter <= 0;
             
             

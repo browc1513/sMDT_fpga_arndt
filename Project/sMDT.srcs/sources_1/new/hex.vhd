@@ -52,7 +52,7 @@ architecture Behavioral of Top is
     signal uartSend : std_logic := '0';
     signal uartTX : std_logic;
     signal uartRdy : std_logic;
-    signal reach_cycle : std_logic;
+    signal reach_cycle : std_logic := '0';
     signal counter_out : std_logic_vector (7 downto 0):= "00000000";
 
 component UART_TX_CTRL
