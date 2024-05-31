@@ -1,5 +1,5 @@
 # SMDT_FPGA single_counter Branch
-This file's goal is to provide clear documentation of the VHDL code developed by Rongqian Qian and Colin Bare, intended for use in MSU prototype cosmic ray station. As it currently stands, my forked repository, single_counter branch, is in the process of being adapted to a 3 scintillator array (middle scintillator acting as a stand-in for the mini-chamber) for which the FPGA simply displays the counts of, for now. In the final code, these will be read to the computer as events.
+This file's goal is to provide clear documentation of the VHDL code developed by Rongqian Qian and Colin Bare, intended for use in MSU prototype cosmic ray station. As it currently stands, my forked repository, single_counter branch, is in the process of being adapted to a 3 scintillator array (middle scintillator acting as a stand-in for the mini-chamber) for which the FPGA displays the counts of. We want to transmit this count to the PC as events, to be able to access cosmic ray data.
 
 ## Prerequisites
 If you are not familiar with FPGA, The tutorial branch is here for view.
@@ -23,10 +23,15 @@ There is only one constraint file for this project: b3.xdc. This file most direc
     sseg[0-6] - Corresponds to the segment on each seven segment "8"
     JA[0-2] - Connections from FPGA to scintillators (and eventually mini-chamber)
     TX - Data transmitter pin
+    RX - Data receiver pin
 
 ## Running
 
 Connect the FPGA board as shown below. JA port is connected with the scintillators. We write code to connect that to the serial output, in the form of the various digital circuits (vhd files) that we've written. WARNING: Input voltage should be 3.3V
+
+To run your complete code with the FPGA, first run synthesis, then implementation, then generate bitstream. Open the hardware manager, select "open target" and then "program device" and your code will then run.
+
+NOTE: make sure the power supply connected the scintillators is on so signals are detected.
 
 ![avatar](Plots/Connect.jpeg)
 
