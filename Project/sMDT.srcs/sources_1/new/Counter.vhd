@@ -103,7 +103,7 @@ architecture Behavioral of Counter is
            counter_out<=(others=>'0');
 
         -- If scintillators detect particles, record count
-        elsif rising_edge(clk) then
+        elsif rising_edge(clk) then --jason was here
            edge_detect_0<=edge_detect_0(0) & JA(0);
            edge_detect_1<=edge_detect_1(0) & JA(1);
            if edge_detect_0="01" and edge_detect_1="01" and idle0 = '0' then
