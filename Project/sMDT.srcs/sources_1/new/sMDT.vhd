@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity sMDT is
 Port ( clk, reset, sw  : in  std_logic;
        an   : out std_logic_vector (3 downto 0);
-       sseg   : out std_logic_vector (7 downto 0);
+       sseg   : out std_logic_vector (7 downto 0)
       );
 end sMDT;
    type t_digial is array (3 downto 0) of integer(10 to 0);
