@@ -38,7 +38,7 @@ entity Top is
   );
   Port (
    clk, reset : in std_logic;
-   JA         : in std_logic_vector(2 downto 0);
+   JA         : in std_logic_vector(1 downto 0); --changed for two
    an         : out std_logic_vector (3 downto 0);
    sseg       : out std_logic_vector (6 downto 0);
    tx         : out std_logic

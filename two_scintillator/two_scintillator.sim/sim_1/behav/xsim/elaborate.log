@@ -1,0 +1,13 @@
+Vivado Simulator v2023.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_uart_behav xil_defaultlib.tb_uart -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-3146] binding entity 'top' does not have generic 'baud' [C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:65]
+ERROR: [VRFC 10-3146] binding entity 'top' does not have generic 'clock_frequency' [C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:66]
+ERROR: [VRFC 10-718] formal port <clock_y3> does not exist in entity <Top>.  Please compare the definition of block <Top> to its component declaration and its instantion to detect the mismatch. [C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:69]
+ERROR: [VRFC 10-718] formal port <user_reset> does not exist in entity <Top>.  Please compare the definition of block <Top> to its component declaration and its instantion to detect the mismatch. [C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:70]
+ERROR: [VRFC 10-718] formal port <usb_rs232_rxd> does not exist in entity <Top>.  Please compare the definition of block <Top> to its component declaration and its instantion to detect the mismatch. [C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:71]
+ERROR: [VRFC 10-718] formal port <usb_rs232_txd> does not exist in entity <Top>.  Please compare the definition of block <Top> to its component declaration and its instantion to detect the mismatch. [C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:72]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit tb_uart in library work failed.

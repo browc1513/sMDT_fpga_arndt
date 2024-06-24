@@ -37,7 +37,7 @@ end entity tb_top;
 architecture Behavioral of tb_top is
   signal clk   : std_logic := '0';
   signal reset : std_logic := '0';
-  signal JA    : std_logic_vector (2 downto 0):= (others =>'0');
+  signal JA    : std_logic_vector (1 downto 0):= (others =>'0'); --changed for two
   signal an    : std_logic_vector (3 downto 0):= (others => '0');
   signal sseg    : std_logic_vector (6 downto 0):= (others => '0');
   signal tx     : std_logic := '0';

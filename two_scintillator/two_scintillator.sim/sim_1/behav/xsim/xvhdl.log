@@ -1,0 +1,12 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/Counter.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Counter'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/UART_TX_CTRL.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'UART_TX_CTRL'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'displayer'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/rate_generator.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'rate_generator'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/hex.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Top'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_uart'
