@@ -104,6 +104,8 @@ read_xdc C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/constrs_1/n
 set_property used_in_implementation false [get_files C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/constrs_1/new/b3.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT_Two_Scintillator/sMDT_Two_Scintillator.srcs/utils_1/imports/synth_1/Top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

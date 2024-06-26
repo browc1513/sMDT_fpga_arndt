@@ -4,5 +4,20 @@ Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 Running: C:/Xilinx/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_top_behav xil_defaultlib.tb_top -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-ERROR: [VRFC 10-3457] index 2 is out of array constraint 1 downto 0 for target 'ja' [C:/Users/smdt/Triple_FPGA/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_top.vhd:64]
-ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit tb_top in library work failed.
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity xil_defaultlib.Counter [counter_default]
+Compiling architecture arch of entity xil_defaultlib.displayer [displayer_default]
+Compiling architecture arch of entity xil_defaultlib.rate_generator [rate_generator_default]
+Compiling architecture behavioral of entity xil_defaultlib.UART_TX_CTRL [uart_tx_ctrl_default]
+Compiling architecture behavioral of entity xil_defaultlib.Top [top_default]
+Compiling architecture behavioral of entity xil_defaultlib.tb_top
+Built simulation snapshot tb_top_behav
