@@ -1,5 +1,5 @@
 # SMDT_FPGA single_counter Branch
-This file's goal is to provide clear documentation of the VHDL code developed by Rongqian Qian and Colin Bare, intended for use in MSU prototype cosmic ray station. As it currently stands, my forked repository, single_counter branch, is in the process of being adapted to a 3 scintillator array (middle scintillator acting as a stand-in for the mini-chamber) for which the FPGA displays the counts of. We want to transmit this count to the PC as events, to be able to access cosmic ray data.
+This file's goal is to provide clear documentation of the VHDL code developed by Rongqian Qian, Colin Bare, and Alexis Arndt, intended for use in MSU prototype cosmic ray station. As it currently stands, my forked repository, two_scintillator branch, is in the process of being adapted to a 2 scintillator array (eventually enclosing the mini chamber) for which the FPGA displays the counts of. We want to transmit this count to the PC as events, to be able to access cosmic ray data.
 
 ## Prerequisites
 If you are not familiar with FPGA, The tutorial branch is here for view.
