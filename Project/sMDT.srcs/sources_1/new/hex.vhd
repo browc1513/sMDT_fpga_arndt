@@ -87,7 +87,7 @@ begin
     
     --Component used to send a byte of data over a UART line.
     Inst_UART_TX_CTRL: UART_TX_CTRL port map(
-            SEND => uartSend,
+            SEND => uartSend, 
             DATA => uartData,
             CLK => CLK,
             READY => uartRdy,

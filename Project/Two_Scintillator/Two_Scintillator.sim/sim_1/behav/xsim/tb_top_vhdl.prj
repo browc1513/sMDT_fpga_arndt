@@ -1,0 +1,11 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../sMDT.srcs/sources_1/new/Counter.vhd" \
+"../../../../../sMDT.srcs/sources_1/new/UART_TX_CTRL.vhd" \
+"../../../../../sMDT.srcs/sources_1/new/display.vhd" \
+"../../../../../sMDT.srcs/sources_1/new/rate_generator.vhd" \
+"../../../../../sMDT.srcs/sources_1/new/hex.vhd" \
+"../../../../../sMDT.srcs/sim_1/new/tb_top.vhd" \
+
+# Do not sort compile order
+nosort
