@@ -75,9 +75,23 @@ process begin
     edge_detect_1(0) <= '0';
     --tx <= '0';
     
+     wait for 16ns;
+    JA(0) <= '1';
+    JA(1) <= '0';
+    --JA(2) <= '1';
+    edge_detect_0(0) <= '1';
+    edge_detect_1(0) <= '1';
+    --edge_detect_2(0) <= '0';
+     wait for 10ns;
+    JA(0) <= '0';
+    JA(1) <= '0';
+    --JA(2) <= '0';
+    edge_detect_0(0) <= '0';
+    edge_detect_1(0) <= '0';
+    
      wait for 116ns;
     JA(0) <= '1';
-    JA(1) <= '1';
+    JA(1) <= '0';
     --JA(2) <= '1';
     edge_detect_0(0) <= '1';
     edge_detect_1(0) <= '1';

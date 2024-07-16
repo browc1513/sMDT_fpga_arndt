@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="tb_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="122.200 ns"></ZoomStartTime>
+      <ZoomEndTime time="395.601 ns"></ZoomEndTime>
+      <Cursor1Time time="129.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="159"></NameColumnWidth>
+      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="19" />
+   <wvobject fp_name="/tb_top/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/JA" type="array">
+      <obj_property name="ElementShortName">JA[1:0]</obj_property>
+      <obj_property name="ObjectShortName">JA[1:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/an" type="array">
+      <obj_property name="ElementShortName">an[3:0]</obj_property>
+      <obj_property name="ObjectShortName">an[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/sseg" type="array">
+      <obj_property name="ElementShortName">sseg[6:0]</obj_property>
+      <obj_property name="ObjectShortName">sseg[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/tx" type="logic">
+      <obj_property name="ElementShortName">tx</obj_property>
+      <obj_property name="ObjectShortName">tx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/edge_detect_0" type="array">
+      <obj_property name="ElementShortName">edge_detect_0[1:0]</obj_property>
+      <obj_property name="ObjectShortName">edge_detect_0[1:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/edge_detect_1" type="array">
+      <obj_property name="ElementShortName">edge_detect_1[1:0]</obj_property>
+      <obj_property name="ObjectShortName">edge_detect_1[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/edge_detect_2" type="array">
+      <obj_property name="ElementShortName">edge_detect_2[1:0]</obj_property>
+      <obj_property name="ObjectShortName">edge_detect_2[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/signal_generate_unit/counter_out" type="array">
+      <obj_property name="ElementShortName">counter_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">counter_out[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/signal_generate_unit/counter_out_reg" type="array">
+      <obj_property name="ElementShortName">counter_out_reg[7:0]</obj_property>
+      <obj_property name="ObjectShortName">counter_out_reg[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/counter_out" type="array">
+      <obj_property name="ElementShortName">counter_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">counter_out[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/uartSend" type="logic">
+      <obj_property name="ElementShortName">uartSend</obj_property>
+      <obj_property name="ObjectShortName">uartSend</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/signal_generate_unit/counter_idle0" type="other">
+      <obj_property name="ElementShortName">counter_idle0</obj_property>
+      <obj_property name="ObjectShortName">counter_idle0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/signal_generate_unit/counter" type="other">
+      <obj_property name="ElementShortName">counter</obj_property>
+      <obj_property name="ObjectShortName">counter</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/signal_generate_unit/counter_reg" type="other">
+      <obj_property name="ElementShortName">counter_reg</obj_property>
+      <obj_property name="ObjectShortName">counter_reg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/rate_generator_unit/readout_state" type="other">
+      <obj_property name="ElementShortName">readout_state</obj_property>
+      <obj_property name="ObjectShortName">readout_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/Inst_UART_TX_CTRL/txState" type="other">
+      <obj_property name="ElementShortName">txState</obj_property>
+      <obj_property name="ObjectShortName">txState</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/signal_generate_unit/idle0" type="logic">
+      <obj_property name="ElementShortName">idle0</obj_property>
+      <obj_property name="ObjectShortName">idle0</obj_property>
+   </wvobject>
+</wave_config>
