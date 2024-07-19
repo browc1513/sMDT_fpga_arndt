@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "C:/Users/Alexis Arndt/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.runs/impl_1/Top.tcl"
+  variable script "C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.runs/impl_1/Top.tcl"
   variable category "vivado_impl"
 }
 
@@ -126,7 +126,7 @@ set rc [catch {
   set_param chipscope.maxJobs 2
   set_param runs.launchOptions { -jobs 4  }
   open_checkpoint Top_routed.dcp
-  set_property webtalk.parent_dir {C:/Users/Alexis Arndt/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.cache/wt} [current_project]
+  set_property webtalk.parent_dir C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.cache/wt [current_project]
 set_property TOP Top [current_fileset]
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }

@@ -3,12 +3,12 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Tue Jul  2 15:11:11 2024
-# Process ID: 18604
-# Current directory: C:/Users/Alexis Arndt/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.runs/synth_1
+# Start of session at: Fri Jul 19 19:20:56 2024
+# Process ID: 14840
+# Current directory: C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.runs/synth_1
 # Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
-# Log file: C:/Users/Alexis Arndt/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.runs/synth_1/Top.vds
-# Journal file: C:/Users/Alexis Arndt/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.runs/synth_1\vivado.jou
-# Running On: Moria20, OS: Windows, CPU Frequency: 3392 MHz, CPU Physical cores: 4, Host memory: 25684 MB
+# Log file: C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.runs/synth_1/Top.vds
+# Journal file: C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/Two_Scintillator/Two_Scintillator.runs/synth_1\vivado.jou
+# Running On: Moria14, OS: Windows, CPU Frequency: 3392 MHz, CPU Physical cores: 4, Host memory: 25684 MB
 #-----------------------------------------------------------
 source Top.tcl -notrace
