@@ -46,7 +46,7 @@ architecture Behavioral of Counter is
     signal counter_reg: integer:=0;
     signal counter_idle0: integer:=0;
     signal counter_idle1: integer:=0;
-    signal idle0: std_logic:= '1';
+    signal idle0: std_logic:= '0';
     --signal idle1: std_logic:='1';
     signal counter_out_reg: unsigned(7 downto 0) := (others => '0');
     signal in0_reg,in1_reg,in2_reg,in3_reg: unsigned (3 downto 0);
