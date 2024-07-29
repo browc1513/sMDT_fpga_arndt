@@ -46,7 +46,7 @@ architecture arch of rate_generator is
     signal counter_idle: integer:=0;
     signal counter_data: integer:=0;
 
-    constant DATA_LEN : natural := 10;
+    constant DATA_LEN : natural := 10; -- the data bus will always be 10 bits (8 data bits and a start and stop bit)
     type readout_states is (DATA, IDLE);
     signal readout_state : readout_states:= IDLE ;
     
@@ -54,7 +54,7 @@ architecture arch of rate_generator is
     
     next_readout_state_process : process(clk)
     begin
-        if reset='1' then
+        if reset='1' then -- is reset is logic high, all signals are set to logic low
            counter_idle<=0;
            counter_data<=0;
            m_tick<='0';
@@ -66,17 +66,17 @@ architecture arch of rate_generator is
               if (readout_state = IDLE) then	
  	      
                    if counter_idle=200000 then-- 100000000 for 1s  100mius
-                       readout_state<= DATA;
-                       output_reg<=input_reg;
-                       m_tick<='1';
-                       counter_idle <= 0;
+                       readout_state<= DATA; -- if readout is IDLE and counter_idle is 200000 redout updated to DATA
+                       output_reg<=input_reg; -- loads input_reg into output_reg
+                       m_tick<='1'; -- m_tick set to logic high
+                       counter_idle <= 0; -- reset counter_idle
                    end if;
               else 
                        counter_data<=counter_data+1;
-                       if counter_data = DATA_LEN then
-                            m_tick<='0';
+                       if counter_data = DATA_LEN then -- if counter_data is equal to 10 (DATA_LEN)
+                            m_tick<='0'; -- resets m_tick to 0
                             counter_data <= 0;
-                                 readout_state<= IDLE;
+                                 readout_state<= IDLE; -- readout set back to IDLE
                         end if;
                end if;
          end if;

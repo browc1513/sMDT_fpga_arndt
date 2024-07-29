@@ -82,16 +82,16 @@ begin
 		case txState is 
 		when RDY =>
 			if (SEND = '1') then
-				txState <= LOAD_BIT;
+				txState <= LOAD_BIT; --if txState is RDY and SEND = 1, txState changes to LOAD_BIT
 			end if;
 		when LOAD_BIT =>
-			txState <= SEND_BIT;
+			txState <= SEND_BIT; --when txState is LOAD_BIT, changes to SEND_BIT
 		when SEND_BIT =>
 			if (bitDone = '1') then
-				if (bitIndex = BIT_INDEX_MAX) then
-					txState <= RDY;
+				if (bitIndex = BIT_INDEX_MAX) then 
+					txState <= RDY; -- if txState is SEND_BIT, bitTmr is 9600 baud, and bitIndex has reached max, txState set to RDY
 				else
-					txState <= LOAD_BIT;
+					txState <= LOAD_BIT; -- otherwise, update txState to LOAD_BIT
 				end if;
 			end if;
 		when others=> --should never be reached
@@ -104,12 +104,12 @@ bit_timing_process : process (CLK)
 begin
 	if (rising_edge(CLK)) then
 		if (txState = RDY) then
-			bitTmr <= (others => '0');
+			bitTmr <= (others => '0'); -- if txState is RDY, set bitTmr to 0
 		else
-			if (bitDone = '1') then
-				bitTmr <= (others => '0');
+			if (bitDone = '1') then 
+				bitTmr <= (others => '0');  -- if bitTmr is 9600 baud, set bitTmr back to 0
 			else
-				bitTmr <= bitTmr + 1;
+				bitTmr <= bitTmr + 1; -- otherwise, update bitTmr to 1
 			end if;
 		end if;
 	end if;
@@ -122,9 +122,9 @@ bit_counting_process : process (CLK)
 begin
 	if (rising_edge(CLK)) then
 		if (txState = RDY) then
-			bitIndex <= 0;
+			bitIndex <= 0; -- if txState is RDY, bitIndex reset to 0
 		elsif (txState = LOAD_BIT) then
-			bitIndex <= bitIndex + 1;
+			bitIndex <= bitIndex + 1; -- if txState is LOAD_BIT, bitIndex is increased by 1
 		end if;
 	end if;
 end process;
@@ -133,7 +133,7 @@ tx_data_latch_process : process (CLK)
 begin
 	if (rising_edge(CLK)) then
 		if (SEND = '1') then
-			txData <= '1' & DATA & '0';
+			txData <= '1' & DATA & '0'; -- if SEND is 1, txData sandwiches DATA with a start (1) and stop (0) bit 
 		end if;
 	end if;
 end process;
@@ -142,15 +142,15 @@ tx_bit_process : process (CLK)
 begin
 	if (rising_edge(CLK)) then
 		if (txState = RDY) then
-			txBit <= '1';
+			txBit <= '1'; -- if txState is RDY, txBit updated to 1
 		elsif (txState = LOAD_BIT) then
-			txBit <= txData(bitIndex);
+			txBit <= txData(bitIndex); -- if txState is LOAD_BIT, txBit is equal to the bitIndex
 		end if;
 	end if;
 end process;
 
-UART_TX <= txBit;
-READY <= '1' when (txState = RDY) else
+UART_TX <= txBit; --UART_TX corresponds to txBit
+READY <= '1' when (txState = RDY) else -- signal READY is high logic when txState is RDY
 			'0';
 
 end Behavioral;
