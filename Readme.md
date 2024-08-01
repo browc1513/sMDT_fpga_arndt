@@ -39,11 +39,13 @@ The real counter should be the number on the display divide by 10 by default. Li
 
 ## Simulation:
 
-![avatar](Plots/Simu.JPG)
+![avatar](Plots/counter_sim.PNG)
 
 The basic idea of a Vivado behavioral simulation is to instantiate an instance of our design, and test its functionality before writing the design to FPGA. A complete simulation file exists in the simulation sources of our project: tb_top.vhd. The tb here stands for test bench, and many developers will refer to it this way. The output of the simulation file is a waveform: a display that keeps track of the changing signals across the module [changes from 0 to 1, interpreting bit-strings as numbers, etc.] The purpose of this functionality is to manually change the inputs of the circuit, to see if the behavioral simulation produces the correct output. In essence, this is a nice way to tell if your code is working as intended.
 
-There is a saved waveform in the project, so running the behavioral simulation will have all necessary variables. The factor of the counter is 1, so the real number of events is 1 times the number on the sseg. Change to 10 before you start the real test for two scintillators (line 138 of counter.vhd). 
+There is a saved waveform in the project, so running the behavioral simulation will have all necessary variables. The factor of the counter is 1, so the real number of events is 1 times the number on the sseg. Change to 10 before you start the real test for two scintillators (line 138 of counter.vhd).
+
+The image above shows this saved waveform, with two simulation 'hits'. The first instance can be seen at 168ns, where a particle is detected by just one of the scintillators, and it can be observed that the counter does not update. The next instance of a 'hit' is at 244ns, where a particle is detected by both scintillators. In this case, the counter will increase by 1, and counter_idle0 will begin the count to 100ns (to account for the sporadic trailing signals received during the actual test). When testing the simulation, this was changed from 100 to 10 so the hits could be counted. This can be changed in line 131 of counter.vhd.
 
 ## Listed below are the pieces of code that still need further attention and development
 
