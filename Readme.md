@@ -1,5 +1,5 @@
 # SMDT_FPGA single_counter Branch
-This file's goal is to provide clear documentation of the VHDL code developed by Rongqian Qian, Colin Bare, and Alexis Arndt, intended for use in MSU prototype cosmic ray station. As it currently stands, my forked repository, two_scintillator branch, is in the process of being adapted to a 2 scintillator array (eventually enclosing the mini chamber) for which the FPGA displays the counts of. We want to transmit this count to the PC as events, to be able to access cosmic ray data.
+This file's goal is to provide clear documentation of the VHDL code developed by Rongqian Qian, Colin Bare, and Alexis Arndt, intended for use in MSU prototype cosmic ray station. As it currently stands, my forked repository, two_scintillator branch, has been adapted to a 2 scintillator array (eventually enclosing the mini chamber) for which the FPGA displays the counts of. We want to transmit this count to the PC as events, to be able to access cosmic ray data.
 
 ## Prerequisites
 If you are not familiar with FPGA, The tutorial branch is here for view.
@@ -37,17 +37,17 @@ NOTE: make sure the power supply connected the scintillators is on so signals ar
 
 The real counter should be the number on the display divide by 10 by default. Line 135 of counter.vhdl is the setting of divider and can be set to any value based on the signal rate.  
 
-## Listed below are the pieces of code that still need further attention and development
-
 ## Simulation:
 
-![avatar](Plots/Simu.JPG)
+![avatar](Plots/counter_sim.PNG)
 
-The basic idea of a Vivado behavioral simulation is to instantiate an instance of our design, and test its functionality before writing the design to FPGA. A mostly complete simulation file exists in the simulation sources of our project: tb_top.vhd. The tb here stands for test bench, and many developers will refer to it this way. The output of the simulation file is a waveform: a display that keeps track of the changing signals across the module [changes from 0 to 1, interpreting bit-strings as numbers, etc.] The purpose of this functionality is to manually change the inputs of the circuit, to see if the behavioral simulation produces the correct output. In essence, this is a nice way to tell if your code is working as intended.
+The basic idea of a Vivado behavioral simulation is to instantiate an instance of our design, and test its functionality before writing the design to FPGA. A complete simulation file exists in the simulation sources of our project: tb_top.vhd. The tb here stands for test bench, and many developers will refer to it this way. The output of the simulation file is a waveform: a display that keeps track of the changing signals across the module [changes from 0 to 1, interpreting bit-strings as numbers, etc.] The purpose of this functionality is to manually change the inputs of the circuit, to see if the behavioral simulation produces the correct output. In essence, this is a nice way to tell if your code is working as intended.
 
-Click the blue high-lighted part and drag the counter_out into the black name column. This one is the total number of event recorded. Then restart the simulation. The factor of counter is one so the real number of event is 1 times the number on the sseg.Change it to 10  before you start real test for 1 layer scintillator.
+There is a saved waveform in the project, so running the behavioral simulation will have all necessary variables. The factor of the counter is 1, so the real number of events is 1 times the number on the sseg. Change to 10 before you start the real test for two scintillators (line 138 of counter.vhd).
 
-The process outlined above is not working at the moment. The counter_out signal is not updating in the vivado behavioral simulation. Must be an error in the simulation file, since we can prove it does in fact update the counts when actually connected. I have also notice tx seems to be 1 the entire time. The simulation meets the condition to change tx to 1 instantly, but it never turns to 0 again (where it was initialized).
+The image above shows this saved waveform, with two simulation 'hits'. The first instance can be seen at 168ns, where a particle is detected by just one of the scintillators, and it can be observed that the counter does not update. The next instance of a 'hit' is at 244ns, where a particle is detected by both scintillators. In this case, the counter will increase by 1, and counter_idle0 will begin the count to 100ns (to account for the sporadic trailing signals received during the actual test). When testing the simulation, this was changed from 100 to 10 so the hits could be counted. This can be changed in line 131 of counter.vhd.
+
+## Listed below are the pieces of code that still need further attention and development
 
 ## Universal Asynchronous Receiver/Transmitter (UART)
 
@@ -62,4 +62,6 @@ Each databus contains a start bit, 8 data bits, and a stop bit
 
 For UART, if using 9600 bauds, Actual byte duration bit duration is 1041.67 $\mu s$, chage the  rate_generator line 68(default is 2000 $\mu s$) so readout cycle time is larger than this.
 
-Also since it only contains 8 bits data(256), so don't make the signals number more than this number in one readout cycle. you can change in rate_generator line 68 for readout cycle time(10ns*number to input) and output signals number divider in counter.vhdl line 135.
+Also since it only contains 8 bits data (256), don't make the signals number more than this number in one readout cycle. You can change line 68 in rate_generator for readout cycle time (10ns*number to input) and output signals number divider in counter.vhd line 138.
+
+Currently, there is some communication between the FPGA and computer, but there are some inconsistencies. When Tera Term is connected (terminal used to receive data from UART), only bytes come thorugh for 14400 and 38400 baud. For 14400 baud, the data comes through as spaces, and the log shows unknown characters. For 38400 baud, only x's and spaces come through the terminal/log. 
