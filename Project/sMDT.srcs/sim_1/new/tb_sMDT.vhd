@@ -23,10 +23,10 @@ library ieee;
     use ieee.math_real.all;
 
 library std;
-    use std.textio.all; 
+    use std.textio.all; --vhdlguide.com/2017/09/22/textio/
 
 library lib_uart;
-    use lib_uart.all;
+    use lib_uart.all; --xmos.com/download/lib_uart-readme(3_0_03rc1).pdf
 
 entity tb_uart is
     generic (
@@ -98,20 +98,20 @@ begin
     ---------------------------------------------------------------------------
     -- GENERATE LOCAL AND REMOTE CLOCKS
     ---------------------------------------------------------------------------
-    local_clock_gen : process(local_clock)
+    local_clock_gen : process(local_clock) --process starts when local_clock changes
     begin
         if not done then
-            local_clock <= not local_clock after (
-                (1.0 / (2.0 * real(local_clock_hz))) * real(1e9)
-            ) * 1 ns;
+            local_clock <= not local_clock after ( -- changes the signal from 1 to 0 or 0 to 1
+                (1.0 / (2.0 * real(local_clock_hz))) * real(1e9) 
+            ) * 1 ns; --adds a delay to the signal change
         end if;
     end process;
-    remote_clock_gen : process(remote_clock_int)
+    remote_clock_gen : process(remote_clock_int) --same as above 
     begin
         if not done then
             remote_clock_int <= not remote_clock_int after (
                 (1.0 / (2.0 * real(remote_clock_hz))) * real(1e9)
-            ) * 1 ns;
+            ) * 1 ns; 
             remote_clock <= transport remote_clock_int after delay_ns * 1 ns;
         end if;
     end process;
@@ -130,42 +130,42 @@ begin
         variable read_ok        : boolean;
         variable first_call     : boolean := false;
     begin
-        if status /= open_ok then
-            file_open(status, input_file, input_path, read_mode);
-            assert (status = open_ok) 
-                report "Failed to open " & input_path
+        if status /= open_ok then --if status is not open_ok
+            file_open(status, input_file, input_path, read_mode); --tries to open file in read mode
+            assert (status = open_ok) --checks if status is open_ok
+                report "Failed to open " & input_path --of not, print failed message
                 severity failure;
-            file_open(status, output_file, output_path, write_mode);
+            file_open(status, output_file, output_path, write_mode); --tries to open file in write mode
             assert (status = open_ok) 
-                report "Failed to open " & output_path
+                report "Failed to open " & output_path --if not, print failed message
                 severity failure;
         end if;
 
         if local_data_out_stb = '1' then
-            write(output_line, to_bitvector(local_data_out));
-            writeline(output_file, output_line);
-            rx_count <= rx_count + 1;
+            write(output_line, to_bitvector(local_data_out)); --changes local_data_out to a bit vector and adds it to the output file
+            writeline(output_file, output_line); --adds to output file
+            rx_count <= rx_count + 1; --increases received count
         end if;
 
-        if not endfile(input_file) then
-            if local_data_in_stb = '0' or local_data_in_ack = '1' then
+        if not endfile(input_file) then --check if end of input file is reached
+            if local_data_in_stb = '0' or local_data_in_ack = '1' then 
                 -- Get Data
-                readline(input_file, data_line);
-                read(data_line, data, read_ok);
-                local_data          <= to_stdlogicvector(data);
-                local_data_in_stb   <= '1';
-                tx_count            <= tx_count + 1;
+                readline(input_file, data_line); --reads line from input file to data line
+                read(data_line, data, read_ok); --reads from data line to data and read_ok changes based on if it was successful or not
+                local_data          <= to_stdlogicvector(data); --changes data to logic vector and assigns to local_data
+                local_data_in_stb   <= '1'; --data is available
+                tx_count            <= tx_count + 1; --increases transmission count
             end if;
-            wait until rising_edge(local_clock);
+            wait until rising_edge(local_clock); --wait for another rising edge
         else
-            if local_data_in_ack = '1' then
-                local_data_in_stb   <= '0';
+            if local_data_in_ack = '1' then 
+                local_data_in_stb   <= '0'; --no more data is available
             end if;
-            if rx_count = tx_count then
+            if rx_count = tx_count then --if transmit and receive are the same...
                 report "Test complete, transmit " & integer'image(tx_count) &
                 " byte(s) and received " & integer'image(rx_count) &
-                " byte(s)";
-                done <= true;
+                " byte(s)"; --reports complete message and displays bytes transmitted and received
+                done <= true; --complete process
             end if;
             wait until rising_edge(local_clock);
         end if;
@@ -173,19 +173,19 @@ begin
     -- If the test does not return data within a time limit then the system may
     -- not be functioning. Abort the test and report an error instead of 
     -- continuing.
-    watchdog : process(local_clock) 
-        constant timeout_reset : integer := 10e6;
-        variable timeout : integer := timeout_reset;
+    watchdog : process(local_clock) -- if changes are made to local_clock
+        constant timeout_reset : integer := 10e6; --a million clock cycles
+        variable timeout : integer := timeout_reset;  --time remaining
     begin
         if rising_edge(local_clock) then
             if local_data_out_stb = '1' then
-                timeout := timeout_reset;
-            else
+                timeout := timeout_reset; --timer is reset if data is being transmitted
+            else --if data is not being transmitted
                 timeout := timeout - 1;
                 if timeout = 0 then
                     report "Automatically aborting testbench because data" &
                     " was not received for " & integer'image(timeout_reset) &
-                    " local clock cycles." severity failure;
+                    " local clock cycles." severity failure; --aborts and sends message if no data is received in timout period
                 end if;
             end if;
         end if;
