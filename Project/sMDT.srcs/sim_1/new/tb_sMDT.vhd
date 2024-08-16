@@ -75,23 +75,23 @@ architecture beh of tb_uart is
     signal remote_clock         : std_logic := '0';
     signal remote_clock_int     : std_logic := '0';
     signal remote_data          : std_logic_vector(7 downto 0);
-    signal remote_data_in_stb   : std_logic;
-    signal remote_data_in_ack   : std_logic;
+    signal remote_data_in_stb   : std_logic := '0';
+    signal remote_data_in_ack   : std_logic := '0';
     signal remote_data_out      : std_logic_vector(7 downto 0);
-    signal remote_data_out_stb  : std_logic;
-    signal remote_data_out_ack  : std_logic;
-    signal remote_tx            : std_logic;
-    signal remote_rx            : std_logic; 
-    signal local_clock          : std_logic := '0';
+    signal remote_data_out_stb  : std_logic := '1'; --
+    signal remote_data_out_ack  : std_logic := '1'; --
+    signal remote_tx            : std_logic := '1'; --
+    signal remote_rx            : std_logic := '1'; --
+    signal local_clock          : std_logic := '1'; --
     signal local_data           : std_logic_vector(7 downto 0);
-    signal local_data_in_stb    : std_logic := '0';
-    signal local_data_in_ack    : std_logic := '0';
+    signal local_data_in_stb    : std_logic := '1'; --
+    signal local_data_in_ack    : std_logic := '1'; --
     signal local_data_out       : std_logic_vector(7 downto 0);
-    signal local_data_out_stb   : std_logic;
-    signal local_data_out_ack   : std_logic;
-    signal local_tx             : std_logic;
-    signal local_rx             : std_logic; 
-    signal rx_count             : integer := 0;
+    signal local_data_out_stb   : std_logic := '1'; --
+    signal local_data_out_ack   : std_logic := '1'; --
+    signal local_tx             : std_logic := '1'; --
+    signal local_rx             : std_logic := '1'; --
+    signal rx_count             : integer := 0; 
     signal tx_count             : integer := 0;
     signal done                 : boolean := False;
 begin

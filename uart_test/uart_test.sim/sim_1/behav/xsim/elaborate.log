@@ -4,7 +4,7 @@ Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 Running: C:/Xilinx/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_uart_behav xil_defaultlib.tb_uart -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-4940] 'top' remains a black box since it has no binding entity [C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:197]
-WARNING: [VRFC 10-4940] 'uart' remains a black box since it has no binding entity [C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:211]
+WARNING: [VRFC 10-4940] 'top' remains a black box since it has no binding entity [C:/Users/Alexis Arndt/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:197]
+WARNING: [VRFC 10-4940] 'uart' remains a black box since it has no binding entity [C:/Users/Alexis Arndt/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/sim_1/new/tb_sMDT.vhd:211]
 Completed static elaboration
 INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
