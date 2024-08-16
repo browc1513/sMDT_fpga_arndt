@@ -34,7 +34,7 @@ To run your complete code with the FPGA, first run synthesis, then implementatio
 
 NOTE: make sure the power supply connected the scintillators is on so signals are detected (power on the bottom left, then select the blue 5V button on the right).
 
-![avatar](Plots/fpga_connections.jpeg)
+![avatar](Plots/fpga_connections.jpg)
 
 The real counter should be the number on the display divide by 10 by default. Line 135 of counter.vhdl is the setting of divider and can be set to any value based on the signal rate.  
 
