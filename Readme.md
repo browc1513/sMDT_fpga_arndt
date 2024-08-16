@@ -27,13 +27,14 @@ There is only one constraint file for this project: b3.xdc. This file most direc
 
 ## Running
 
-Connect the FPGA board as shown below. JA port is connected with the scintillators. We write code to connect that to the serial output, in the form of the various digital circuits (vhd files) that we've written. WARNING: Input voltage should be 3.3V
+Connect the FPGA board as shown below. JA port is connected with the scintillators. We write code to connect that to the serial output, in the form of the various digital circuits (vhd files) that we've written. The top scintillator corresponds to JA[0], the middle to JA[1], and the bottom to JA[2]. From the same PMT, there is a positive (red) and ground (black) wire. Attached are smaller wires that attach to the JA component of the board. The color connections for JA[0] are black(-) and orange(+), JA[1] are red(-) and green(+), and JA[2] are white(-) and orange(+). 
+WARNING: Input voltage should be 3.3V
 
 To run your complete code with the FPGA, first run synthesis, then implementation, then generate bitstream. Open the hardware manager, select "open target" and then "program device" and your code will then run.
 
-NOTE: make sure the power supply connected the scintillators is on so signals are detected.
+NOTE: make sure the power supply connected the scintillators is on so signals are detected (power on the bottom left, then select the blue 5V button on the right).
 
-![avatar](Plots/Connect.jpeg)
+![avatar](Plots/fpga_connections.jpg)
 
 The real counter should be the number on the display divide by 10 by default. Line 135 of counter.vhdl is the setting of divider and can be set to any value based on the signal rate.  
 
@@ -60,8 +61,8 @@ A system for transmitting the event data bit-by-bit ("0" or "1"). We want to rea
 
 Each databus contains a start bit, 8 data bits, and a stop bit
 
-For UART, if using 9600 bauds, Actual byte duration bit duration is 1041.67 $\mu s$, chage the  rate_generator line 68(default is 2000 $\mu s$) so readout cycle time is larger than this.
+For UART, if using 9600 bauds, actual byte duration bit duration is 1041.67 $\mu s$; change the rate_generator line 68(default is 2000 $\mu s$) so readout cycle time is larger than this.
 
 Also since it only contains 8 bits data (256), don't make the signals number more than this number in one readout cycle. You can change line 68 in rate_generator for readout cycle time (10ns*number to input) and output signals number divider in counter.vhd line 138.
 
-Currently, there is some communication between the FPGA and computer, but there are some inconsistencies. When Tera Term is connected (terminal used to receive data from UART), only bytes come thorugh for 14400 and 38400 baud. For 14400 baud, the data comes through as spaces, and the log shows unknown characters. For 38400 baud, only x's and spaces come through the terminal/log. 
+Currently, there is some communication between the FPGA and computer, but there are inconsistencies. When Tera Term is connected (terminal used to receive data from UART), only bytes come thorugh for 14400 and 38400 baud. For 14400 baud, the data comes through as spaces, and the log shows unknown characters. For 38400 baud, only x's and spaces come through the terminal/log. 
