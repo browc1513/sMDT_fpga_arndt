@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Wed Aug  7 18:08:32 2024
+| Date         : Fri Aug 16 14:13:41 2024
 | Host         : Moria14 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
 | Design       : Top
@@ -73,8 +73,8 @@ Table of Contents
 +----------------+-------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
 |  Clock Signal  |                  Enable Signal                  |                Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+-------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG | signal_generate_unit/in1_reg[3]_i_1_n_0         | reset_IBUF                                     |                2 |              4 |         2.00 |
 |  clk_IBUF_BUFG | signal_generate_unit/in0_reg[3]_i_1_n_0         | reset_IBUF                                     |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG | signal_generate_unit/in1_reg[3]_i_1_n_0         | reset_IBUF                                     |                2 |              4 |         2.00 |
 |  clk_IBUF_BUFG | signal_generate_unit/in3_reg[3]_i_1_n_0         | reset_IBUF                                     |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG | signal_generate_unit/in2_reg[3]_i_1_n_0         | reset_IBUF                                     |                2 |              4 |         2.00 |
 |  clk_IBUF_BUFG | rate_generator_unit/output_reg[7]_i_1_n_0       |                                                |                2 |              8 |         4.00 |
@@ -82,10 +82,10 @@ Table of Contents
 |  clk_IBUF_BUFG | signal_generate_unit/counter_out_reg[7]_i_1_n_0 | reset_IBUF                                     |                2 |              8 |         4.00 |
 |  clk_IBUF_BUFG |                                                 | Inst_UART_TX_CTRL/bitTmr                       |                4 |             14 |         3.50 |
 |  clk_IBUF_BUFG |                                                 | reset_IBUF                                     |                7 |             22 |         3.14 |
+|  clk_IBUF_BUFG | Inst_UART_TX_CTRL/bitIndex                      | Inst_UART_TX_CTRL/txBit_i_1_n_0                |                9 |             32 |         3.56 |
 |  clk_IBUF_BUFG | rate_generator_unit/p_1_in                      | rate_generator_unit/counter_data[31]_i_1_n_0   |                9 |             32 |         3.56 |
 |  clk_IBUF_BUFG | signal_generate_unit/counter[0]_i_1_n_0         | reset_IBUF                                     |                8 |             32 |         4.00 |
 |  clk_IBUF_BUFG | signal_generate_unit/counter_idle00             | signal_generate_unit/counter_idle0[31]_i_1_n_0 |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG | Inst_UART_TX_CTRL/bitIndex                      | Inst_UART_TX_CTRL/txBit_i_1_n_0                |                9 |             32 |         3.56 |
 |  clk_IBUF_BUFG |                                                 |                                                |               12 |             37 |         3.08 |
 +----------------+-------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
 
