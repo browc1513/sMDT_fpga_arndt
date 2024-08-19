@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Mon Aug 19 14:38:40 2024
+# Process ID: 14948
+# Current directory: C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/basys-3_demo/basys-3_demo.runs/impl_1
+# Command line: vivado.exe -log GPIO_demo.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source GPIO_demo.tcl -notrace
+# Log file: C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/basys-3_demo/basys-3_demo.runs/impl_1/GPIO_demo.vdi
+# Journal file: C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/basys-3_demo/basys-3_demo.runs/impl_1\vivado.jou
+# Running On: Moria14, OS: Windows, CPU Frequency: 3392 MHz, CPU Physical cores: 4, Host memory: 25684 MB
+#-----------------------------------------------------------
+source GPIO_demo.tcl -notrace
