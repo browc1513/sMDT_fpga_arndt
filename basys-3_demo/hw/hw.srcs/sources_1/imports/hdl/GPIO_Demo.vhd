@@ -357,8 +357,8 @@ btnDetect <= '1' when ((btnReg(0)='0' and btnDeBnc(0)='1') or
 --frame shift error from occuring during the first message.
 process(CLK)
 begin
-  if (rising_edge(CLK)) then
-    if ((reset_cntr = RESET_CNTR_MAX) or (uartState /= RST_REG)) then
+  if (rising_edge(CLK)) then --reset process
+    if ((reset_cntr = RESET_CNTR_MAX) or (uartState /= RST_REG)) then 
       reset_cntr <= (others=>'0');
     else
       reset_cntr <= reset_cntr + 1;
@@ -370,34 +370,34 @@ end process;
 next_uartState_process : process (CLK)
 begin
 	if (rising_edge(CLK)) then
-		if (btnDeBnc(4) = '1') then
-			uartState <= RST_REG;
+		if (btnDeBnc(4) = '1') then --if 4th button is pressed
+			uartState <= RST_REG; -- uart state is set to reset
 		else	
 			case uartState is 
 			when RST_REG =>
         if (reset_cntr = RESET_CNTR_MAX) then
-          uartState <= LD_INIT_STR;
+          uartState <= LD_INIT_STR; -- if timer is maxed, welcome string loaded
         end if;
 			when LD_INIT_STR =>
-				uartState <= SEND_CHAR;
+				uartState <= SEND_CHAR; --uart state to send character
 			when SEND_CHAR =>
-				uartState <= RDY_LOW;
+				uartState <= RDY_LOW; --uart state wiating for UART_TX_CTRL to go low
 			when RDY_LOW =>
-				uartState <= WAIT_RDY;
+				uartState <= WAIT_RDY; --wait for READY signal from UART_TX_CTRL to go high 
 			when WAIT_RDY =>
 				if (uartRdy = '1') then
-					if (strEnd = strIndex) then
-						uartState <= WAIT_BTN;
+					if (strEnd = strIndex) then 
+						uartState <= WAIT_BTN; --wait for button to be pressed
 					else
-						uartState <= SEND_CHAR;
+						uartState <= SEND_CHAR; --see line 113
 					end if;
 				end if;
 			when WAIT_BTN =>
 				if (btnDetect = '1') then
-					uartState <= LD_BTN_STR;
+					uartState <= LD_BTN_STR; --when button pressed, uart state is loading button string
 				end if;
 			when LD_BTN_STR =>
-				uartState <= SEND_CHAR;
+				uartState <= SEND_CHAR; 
 			when others=> --should never be reached
 				uartState <= RST_REG;
 			end case;
