@@ -65,7 +65,7 @@ architecture arch of rate_generator is
 
               if (readout_state = IDLE) then	
  	      
-                   if counter_idle=200000 then-- 100000000 clk cycles for 1s, 200000 clk cycles for 2ms
+                   if counter_idle=100000000 then-- 100000000 clk cycles for 1s, 200000 clk cycles for 2ms
                        readout_state<= DATA; -- if readout is IDLE and counter_idle is 200000 redout updated to DATA
                        output_reg<=input_reg; -- loads input_reg into output_reg
                        m_tick<='1'; -- m_tick set to logic high
