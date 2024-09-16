@@ -48,8 +48,6 @@ There is a saved waveform in the project, so running the behavioral simulation w
 
 The image above shows this saved waveform, with two simulation 'hits'. The first instance can be seen at 168ns, where a particle is detected by just one of the scintillators, and it can be observed that the counter does not update. The next instance of a 'hit' is at 244ns, where a particle is detected by both scintillators. In this case, the counter will increase by 1, and counter_idle0 will begin the count to 100ns (to account for the sporadic trailing signals received during the actual test). When testing the simulation, this was changed from 100 to 10 so the hits could be counted. This can be changed in line 131 of counter.vhd.
 
-## Listed below are the pieces of code that still need further attention and development
-
 ## Universal Asynchronous Receiver/Transmitter (UART)
 
 ![avatar](Plots/Rate.JPG)
@@ -59,10 +57,19 @@ Two files are associated with UART in this project (other than the top file):
     - UART_RX_CTRL (Receiver)
 A system for transmitting the event data bit-by-bit ("0" or "1"). We want to read in data as events to the computer, to be outputed into txt files (for now, may wanna make a spectrum later). Txt files should contain trigger time, arrival time.
 
-Each databus contains a start bit, 8 data bits, and a stop bit
+Each databus contains a start bit, 8 data bits, and a stop bit.
 
 For UART, if using 9600 bauds, actual byte duration bit duration is 1041.67 $\mu s$; change the rate_generator line 68(default is 2000 $\mu s$) so readout cycle time is larger than this.
 
 Also since it only contains 8 bits data (256), don't make the signals number more than this number in one readout cycle. You can change line 68 in rate_generator for readout cycle time (10ns*number to input) and output signals number divider in counter.vhd line 138.
 
-Currently, there is some communication between the FPGA and computer, but there are inconsistencies. When Tera Term is connected (terminal used to receive data from UART), only bytes come thorugh for 14400 and 38400 baud. For 14400 baud, the data comes through as spaces, and the log shows unknown characters. For 38400 baud, only x's and spaces come through the terminal/log. 
+To see the counts in real time, open VS Code, find file "cosmic_ray_gui.py," and run it. A terminal should open and output the number of counts per second for a minute. 
+
+## Listed below are the pieces of code that still need further attention and development
+
+## Count Output (UART)
+
+While the UART is communicating correctly with the computer, we want each count to come through individually, not just per second. Each count should have an event ID, along with a timestamp, which will be saved to a file (.txt or .csv). This file should be able to be manipulated to output any type of analysis (could be counts per second, minute, etc.). 
+
+
+
