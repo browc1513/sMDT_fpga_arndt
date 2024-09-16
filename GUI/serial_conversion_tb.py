@@ -19,5 +19,5 @@ def conversions(path):
     count = to_decimal(hex)
     print('Counts per second:', count)
 
-path = 'COM7_2024_08_29.17.43.42.568.txt'
+path = "C:/Users/Alexis/Documents/GitHub/sMDT_fpga_arndt/GUI/COM7_2024_08_29.17.43.42.568.txt"
 conversions(path)
