@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/smdt/Triple_FPGA/sMDT_FPGA/Project/sMDT.runs/impl_1'
+HD_PWD='C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
