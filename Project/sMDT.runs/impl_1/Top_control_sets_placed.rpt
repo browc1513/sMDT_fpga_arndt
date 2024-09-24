@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Fri May 31 13:08:35 2024
-| Host         : DESKTOP-V8TE6SP running 64-bit major release  (build 9200)
+| Date         : Mon Sep 23 13:24:35 2024
+| Host         : DESKTOP-FCJ5MKD running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
 | Design       : Top
 | Device       : xc7a35t
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    16 |
-|    Minimum number of control sets                        |    16 |
+| Total control sets                                       |    14 |
+|    Minimum number of control sets                        |    14 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    28 |
+| Unused register locations in slices containing registers |    23 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    16 |
-| >= 0 to < 4        |     1 |
+| Total control sets |    14 |
+| >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     4 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     3 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     1 |
-| >= 16              |     7 |
+| >= 16              |     6 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,37 +58,35 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              38 |           12 |
-| No           | No                    | Yes                    |              23 |            7 |
+| No           | No                    | No                     |              37 |           11 |
+| No           | No                    | Yes                    |              22 |            6 |
 | No           | Yes                   | No                     |              14 |            4 |
-| Yes          | No                    | No                     |              16 |            5 |
-| Yes          | No                    | Yes                    |              57 |           21 |
-| Yes          | Yes                   | No                     |             128 |           36 |
+| Yes          | No                    | No                     |              16 |            2 |
+| Yes          | No                    | Yes                    |              56 |           19 |
+| Yes          | Yes                   | No                     |              96 |           26 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+-------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
-|  Clock Signal  |               Enable Signal               |                Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+-------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG | signal_generate_unit/edge_detect_20       | reset_IBUF                                     |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG | signal_generate_unit/counter_reg[4]_0     | reset_IBUF                                     |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG | signal_generate_unit/in2_reg[3]_i_1_n_0   | reset_IBUF                                     |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG | signal_generate_unit/in1_reg[3]_i_1_n_0   | reset_IBUF                                     |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG | signal_generate_unit/in3_reg[3]_i_1_n_0   | reset_IBUF                                     |                3 |              4 |         1.33 |
-|  clk_IBUF_BUFG | rate_generator_unit/output_reg[7]_i_1_n_0 |                                                |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG | rate_generator_unit/E[0]                  | reset_IBUF                                     |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG | rate_generator_unit/uartSend              |                                                |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG |                                           | Inst_UART_TX_CTRL/bitTmr                       |                4 |             14 |         3.50 |
-|  clk_IBUF_BUFG |                                           | reset_IBUF                                     |                7 |             23 |         3.29 |
-|  clk_IBUF_BUFG | signal_generate_unit/counter[0]_i_1_n_0   | reset_IBUF                                     |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG | signal_generate_unit/counter_idle00       | signal_generate_unit/counter_idle0[31]_i_1_n_0 |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG | signal_generate_unit/counter_idle10       | signal_generate_unit/counter_idle1[31]_i_1_n_0 |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG | Inst_UART_TX_CTRL/bitIndex                | Inst_UART_TX_CTRL/txBit_i_1_n_0                |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG | rate_generator_unit/p_1_in                | rate_generator_unit/counter_data[31]_i_1_n_0   |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG |                                           |                                                |               12 |             38 |         3.17 |
-+----------------+-------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
++----------------+-------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |                  Enable Signal                  |                Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+-------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | signal_generate_unit/in0_reg[3]_i_1_n_0         | reset_IBUF                                     |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG | signal_generate_unit/in1_reg[3]_i_1_n_0         | reset_IBUF                                     |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | signal_generate_unit/in2_reg[3]_i_1_n_0         | reset_IBUF                                     |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | signal_generate_unit/in3_reg[3]_i_1_n_0         | reset_IBUF                                     |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG | rate_generator_unit/output_reg[7]_i_1_n_0       |                                                |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG | rate_generator_unit/uartSend                    |                                                |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG | signal_generate_unit/counter_out_reg[7]_i_1_n_0 | reset_IBUF                                     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG |                                                 | Inst_UART_TX_CTRL/bitTmr                       |                4 |             14 |         3.50 |
+|  clk_IBUF_BUFG |                                                 | reset_IBUF                                     |                6 |             22 |         3.67 |
+|  clk_IBUF_BUFG | rate_generator_unit/p_1_in                      | rate_generator_unit/counter_data[31]_i_1_n_0   |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG | signal_generate_unit/counter[0]_i_1_n_0         | reset_IBUF                                     |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG | signal_generate_unit/counter_idle00             | signal_generate_unit/counter_idle0[31]_i_1_n_0 |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG | Inst_UART_TX_CTRL/bitIndex                      | Inst_UART_TX_CTRL/txBit_i_1_n_0                |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG |                                                 |                                                |               11 |             37 |         3.36 |
++----------------+-------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
 
 
