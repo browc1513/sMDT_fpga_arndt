@@ -10,7 +10,7 @@ import numpy as np
 #c.mainloop()
 
 #Connecting to the serial port
-uart = serial.Serial('COM7', 9600, timeout = 1)
+uart = serial.Serial('COM4', 9600, timeout = 1)
 
 def to_hex(txt):
     return txt.encode('utf-8').hex()
