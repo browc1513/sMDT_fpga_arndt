@@ -35,10 +35,9 @@ entity Counter is
     Port 
     ( clk, reset : in std_logic;
       reach_cycle : in std_logic := '0';
-      JA : in std_logic_vector(1 downto 0); --changed for two
+      JA : in std_logic_vector(1 downto 0); 
       in0,in1,in2,in3 : out std_logic_vector(6 downto 0);
-      counter_out :  out std_logic_vector(7 downto 0):= (others => '0')
-    );
+      counter_out :  out std_logic_vector(7 downto 0):= (others => '0'));
 end Counter;
 
 architecture Behavioral of Counter is
@@ -47,12 +46,10 @@ architecture Behavioral of Counter is
     signal counter_idle0: integer:=0;
     signal counter_idle1: integer:=0;
     signal idle0: std_logic:= '0';
-    --signal idle1: std_logic:='1';
     signal counter_out_reg: unsigned(7 downto 0) := (others => '0');
     signal in0_reg,in1_reg,in2_reg,in3_reg: unsigned (3 downto 0);
     signal edge_detect_0 : std_logic_vector(1 downto 0);
     signal edge_detect_1 : std_logic_vector(1 downto 0);
-    --signal edge_detect_2 : std_logic_vector(1 downto 0); 
 
     function four_bits_to_sseg 
     ( 
@@ -98,7 +95,6 @@ architecture Behavioral of Counter is
            in3_reg<=(others=>'0');
            edge_detect_0<=(others=>'0');
            edge_detect_1<=(others=>'0');
-           --edge_detect_2<=(others=>'0');
            counter_out_reg<=(others=>'0');
            counter_out<=(others=>'0');
 
@@ -107,24 +103,10 @@ architecture Behavioral of Counter is
            edge_detect_0<=edge_detect_0(0) & JA(0);
            edge_detect_1<=edge_detect_1(0) & JA(1);
            if edge_detect_0="01" and  edge_detect_1="01" and idle0 = '0' then
-                --edge_detect_2<=edge_detect_2(0) & JA(2);
-                --if edge_detect_2="01" and idle1 = '0' then
                     counter <= counter+1;
                     counter_reg<= counter_reg+1;
-                    --idle1 <= '1';
-                --end if;
                 idle0 <= '1';
            end if;
-            
-            -- changed for two
-            --Idle signals used to introduce dead time before counts begin. Periodic after pulses from cosmic rays filtered out
-            --if idle1='1' then
-                --counter_idle1<= counter_idle1+1;
-                --if counter_idle1=400 then
-                    --counter_idle1 <=0;
-                    --idle1<='0';
-                --end if;
-             --end if;    
              
             if idle0='1' then
                 counter_idle0<= counter_idle0+1;

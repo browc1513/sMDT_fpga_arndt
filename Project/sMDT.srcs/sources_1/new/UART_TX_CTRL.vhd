@@ -38,6 +38,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.std_logic_unsigned.all;
+use IEEE.NUMERIC_STD.ALL;
 
 entity UART_TX_CTRL is
     Port ( SEND : in  STD_LOGIC;
@@ -72,6 +73,10 @@ signal txBit : std_logic := '1';
 signal txData : std_logic_vector(9 downto 0);
 
 signal txState : TX_STATE_TYPE := RDY;
+
+-- added timestamp information
+-- signal timestamp : std_logic_vector (31 downto 0);
+-- signal timestamp_counter: unsigned(31 downto 0);
 
 begin
 
@@ -129,11 +134,21 @@ begin
 	end if;
 end process;
 
+-- timestamp process added
+-- timestamp_process : process (CLK)
+-- begin 
+    -- if (rising_edge(CLK)) then
+        -- timestamp_counter <= timestamp_counter + 1;
+        -- timestamp <= std_logic_vector(timestamp_counter);
+    -- end if; 
+-- end process; 
+
 tx_data_latch_process : process (CLK)
 begin
 	if (rising_edge(CLK)) then
 		if (SEND = '1') then
 			txData <= '1' & DATA & '0'; -- if SEND is 1, txData sandwiches DATA with a start (1) and stop (0) bit 
+			-- txData <= timestamp & DATA; -- changed
 		end if;
 	end if;
 end process;
