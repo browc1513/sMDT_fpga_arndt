@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Mon Sep 30 14:50:51 2024
+| Date         : Mon Sep 30 15:22:40 2024
 | Host         : DESKTOP-FCJ5MKD running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
 | Design       : Top
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              38 |           12 |
+| No           | No                    | No                     |              38 |           11 |
 | No           | No                    | Yes                    |              18 |            5 |
 | No           | Yes                   | No                     |              14 |            4 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              95 |           26 |
+| Yes          | Yes                   | No                     |              95 |           30 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -76,9 +76,9 @@ Table of Contents
 |  clk_IBUF_BUFG |                              | Inst_UART_TX_CTRL/bitTmr                         |                4 |             14 |         3.50 |
 |  clk_IBUF_BUFG |                              | reset_IBUF                                       |                5 |             18 |         3.60 |
 |  clk_IBUF_BUFG | Inst_UART_TX_CTRL/byte_index | Inst_UART_TX_CTRL/byte_index[31]_i_1_n_0         |                8 |             31 |         3.88 |
-|  clk_IBUF_BUFG | rate_generator_unit/p_1_in   | rate_generator_unit/counter_data[31]_i_1_n_0     |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG | rate_generator_unit/p_1_in   | rate_generator_unit/counter_data[31]_i_1_n_0     |               13 |             32 |         2.46 |
 |  clk_IBUF_BUFG | Inst_UART_TX_CTRL/bitIndex   | Inst_UART_TX_CTRL/FSM_onehot_txState_reg_n_0_[0] |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG |                              |                                                  |               12 |             38 |         3.17 |
+|  clk_IBUF_BUFG |                              |                                                  |               11 |             38 |         3.45 |
 +----------------+------------------------------+--------------------------------------------------+------------------+----------------+--------------+
 
 

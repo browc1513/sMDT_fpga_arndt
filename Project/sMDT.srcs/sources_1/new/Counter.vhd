@@ -108,7 +108,7 @@ architecture Behavioral of Counter is
 
         -- If scintillators detect particles, record count (to account for two)
         elsif rising_edge(clk) then
-           timestamp <= timestamp + 1;
+           timestamp <= timestamp + 1; -- increase timestamp for each coincidence
            edge_detect_0<=edge_detect_0(0) & JA(0);
            edge_detect_1<=edge_detect_1(0) & JA(1);
            if edge_detect_0="01" and  edge_detect_1="01" and idle0 = '0' then

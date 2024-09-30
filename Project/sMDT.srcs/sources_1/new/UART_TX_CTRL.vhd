@@ -77,8 +77,19 @@ signal txState : TX_STATE_TYPE := RDY;
 -- added timestamp information
 signal timestamp_buffer : std_logic_vector (31 downto 0); --buffer to hold the timestamp
 signal byte_index : integer := 0; --tracks the bytes of the timestamp
+signal test_data : std_logic_vector(7 downto 0) := "01000001"; -- testing uart with letter A
 
 begin
+
+-- test if the UART is even working
+process(clk)
+begin
+    if rising_edge(clk) then
+        if SEND = '1' then
+            txData <= '1' & test_data & '0'; 
+        end if;
+    end if;
+end process;
 
 --Next state logic
 next_txState_process : process (CLK)
