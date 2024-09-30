@@ -75,8 +75,8 @@ signal txData : std_logic_vector(9 downto 0);
 signal txState : TX_STATE_TYPE := RDY;
 
 -- added timestamp information
--- signal timestamp : std_logic_vector (31 downto 0);
--- signal timestamp_counter: unsigned(31 downto 0);
+signal timestamp_buffer : std_logic_vector (31 downto 0); --buffer to hold the timestamp
+signal byte_index : integer := 0; --tracks the bytes of the timestamp
 
 begin
 
@@ -94,9 +94,15 @@ begin
 		when SEND_BIT =>
 			if (bitDone = '1') then
 				if (bitIndex = BIT_INDEX_MAX) then 
-					txState <= RDY; -- if txState is SEND_BIT, bitTmr is 9600 baud, and bitIndex has reached max, txState set to RDY
+					if byte_index = 3 then -- for the 4 bytes of the timestamp (32/8 is 4 bytes)
+					   txState <= RDY; -- if txState is SEND_BIT, bitTmr is 9600 baud, and bitIndex has reached max, txState set to RDY
+					   byte_index <= 0; -- resets byte_index
+				    else
+				        byte_index <= byte_index + 1; -- if byte_index isn't at 3, then move to the next byte
+					    txState <= LOAD_BIT; -- otherwise, update txState to LOAD_BIT
+				    end if;
 				else
-					txState <= LOAD_BIT; -- otherwise, update txState to LOAD_BIT
+				    txState <= LOAD_BIT;
 				end if;
 			end if;
 		when others=> --should never be reached
@@ -134,20 +140,11 @@ begin
 	end if;
 end process;
 
--- timestamp process added
--- timestamp_process : process (CLK)
--- begin 
-    -- if (rising_edge(CLK)) then
-        -- timestamp_counter <= timestamp_counter + 1;
-        -- timestamp <= std_logic_vector(timestamp_counter);
-    -- end if; 
--- end process; 
-
 tx_data_latch_process : process (CLK)
 begin
 	if (rising_edge(CLK)) then
-		if (SEND = '1') then
-			txData <= '1' & DATA & '0'; -- if SEND is 1, txData sandwiches DATA with a start (1) and stop (0) bit 
+		if (SEND = '1' and byte_index = 0) then
+			timestamp_buffer <= DATA & timestamp_buffer(31 downto 8); -- load first byte of timestamp
 			-- txData <= timestamp & DATA; -- changed
 		end if;
 	end if;
