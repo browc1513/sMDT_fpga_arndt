@@ -54,6 +54,7 @@ architecture Behavioral of Top is
     signal uartRdy : std_logic;
     signal reach_cycle : std_logic := '0';
     signal counter_out : std_logic_vector (7 downto 0):= "00000000"; 
+    signal timestamp : std_logic_vector(31 downto 0); -- added
 
 component UART_TX_CTRL
 Port(
@@ -69,7 +70,8 @@ begin
     signal_generate_unit: entity work.counter(Behavioral) 
     port map(
     JA=>JA, clk=>clk, reset=>reset ,
-    in0=>in0, in1=>in1, in2=>in2, in3=>in3,reach_cycle=>uartSend,counter_out=>counter_out
+    in0=>in0, in1=>in1, in2=>in2, in3=>in3,reach_cycle=>uartSend,counter_out=>counter_out,
+    timestamp_out => timestamp --added
     ); 
 
     displayer_unit: entity work.displayer(arch) 
@@ -95,6 +97,20 @@ begin
             READY => uartRdy,
             UART_TX => uartTX
         );
+    
+    -- sending the timestamp as 4 bytes
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if uartSend = '1' then
+                uartData <= timestamp(31 downto 24);
+                uartData <= timestamp(23 downto 16);
+                uartData <= timestamp(15 downto 8);
+                uartData <= timestamp(7 downto 0);
+            end if;
+        end if;
+    end process;
+
     
     tx <= uartTX;
    

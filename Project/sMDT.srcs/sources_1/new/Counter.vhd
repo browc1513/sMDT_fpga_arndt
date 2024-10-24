@@ -37,7 +37,8 @@ entity Counter is
       reach_cycle : in std_logic := '0';
       JA : in std_logic_vector(1 downto 0); 
       in0,in1,in2,in3 : out std_logic_vector(6 downto 0);
-      counter_out :  out std_logic_vector(7 downto 0):= (others => '0')
+      counter_out :  out std_logic_vector(7 downto 0):= (others => '0');
+      timestamp_out : out std_logic_vector(31 downto 0) := (others => '0')
       );
 end Counter;
 
@@ -51,6 +52,8 @@ architecture Behavioral of Counter is
     signal in0_reg,in1_reg,in2_reg,in3_reg: unsigned (3 downto 0);
     signal edge_detect_0 : std_logic_vector(1 downto 0);
     signal edge_detect_1 : std_logic_vector(1 downto 0);
+    signal timestamp : std_logic_vector(31 downto 0) := (others => '0');
+    signal timestamp_counter : std_logic_vector(31 downto 0) := (others => '0');
 
     function four_bits_to_sseg 
     ( 
@@ -80,7 +83,7 @@ architecture Behavioral of Counter is
             return sseg_tem;
      end function;
      
-    begin
+begin
     process(clk)
     begin
          if reach_cycle='1' then
@@ -98,14 +101,18 @@ architecture Behavioral of Counter is
            edge_detect_1<=(others=>'0');
            counter_out_reg<=(others=>'0');
            counter_out<=(others=>'0');
+           timestamp_counter <= (others => '0'); --added
+           timestamp <= (others => '0'); --added
 
         -- If scintillators detect particles, record count (to account for two)
         elsif rising_edge(clk) then
+           timestamp_counter <= std_logic_vector(unsigned(timestamp_counter) + 1);
            edge_detect_0<=edge_detect_0(0) & JA(0);
            edge_detect_1<=edge_detect_1(0) & JA(1);
            if edge_detect_0="01" and  edge_detect_1="01" and idle0 = '0' then
                     counter <= counter+1;
                     counter_reg<= counter_reg+1;
+                    timestamp <= timestamp_counter; 
                 idle0 <= '1';
            end if;
              
@@ -154,5 +161,8 @@ architecture Behavioral of Counter is
        in1<=four_bits_to_sseg(in1_reg);
        in2<=four_bits_to_sseg(in2_reg);
        in3<=four_bits_to_sseg(in3_reg);
+       
+-- assign timestamp to output
+       timestamp_out <= timestamp;
 
 end Behavioral;
