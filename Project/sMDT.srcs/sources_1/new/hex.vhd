@@ -39,14 +39,11 @@ entity Top is
   Port (
    clk, reset : in std_logic;
    JA         : in std_logic_vector(1 downto 0); --changed for two
-   an         : out std_logic_vector (3 downto 0);
-   sseg       : out std_logic_vector (6 downto 0);
    tx         : out std_logic
    );
 end Top;
  
 architecture Behavioral of Top is
-    signal in0,in1,in2,in3 : std_logic_vector (6 downto 0);
     signal max_tick        : std_logic;
     signal uartData : std_logic_vector (7 downto 0):= "00000000";
     signal uartSend : std_logic := '0';
@@ -68,17 +65,9 @@ end component;
 begin
     signal_generate_unit: entity work.counter(Behavioral) 
     port map(
-    JA=>JA, clk=>clk, reset=>reset ,
-    in0=>in0, in1=>in1, in2=>in2, in3=>in3,reach_cycle=>uartSend,counter_out=>counter_out
+    JA=>JA, clk=>clk, reset=>reset,reach_cycle=>uartSend,counter_out=>counter_out
     ); 
 
-    displayer_unit: entity work.displayer(arch) 
-    port map(
-    clk=>clk, reset=>reset , 
-    in0=>in0, in1=>in1, in2=>in2, in3=>in3,
-    an=>an,
-    sseg=>sseg);
-    
     --Component used to control readout rate.
     rate_generator_unit: entity work.rate_generator(arch) 
     port map(

@@ -72,7 +72,7 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
-create_project -in_memory -part xc7a35tcpg236-1
+create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
@@ -88,7 +88,6 @@ OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
   C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/Counter.vhd
   C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/UART_TX_CTRL.vhd
-  C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/display.vhd
   C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/rate_generator.vhd
   C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/sources_1/new/hex.vhd
 }
@@ -101,8 +100,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/constrs_1/new/b3.xdc
-set_property used_in_implementation false [get_files C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/constrs_1/new/b3.xdc]
+read_xdc C:/Users/sMDT/Downloads/Arty-A7-100-Master.xdc
+set_property used_in_implementation false [get_files C:/Users/sMDT/Downloads/Arty-A7-100-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
@@ -110,7 +109,7 @@ read_checkpoint -auto_incremental -incremental C:/Users/sMDT/Documents/GitHub/sM
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top Top -part xc7a35tcpg236-1
+synth_design -top Top -part xc7a100tcsg324-1
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
