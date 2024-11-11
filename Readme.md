@@ -37,7 +37,7 @@ To run your complete code with the FPGA, first run synthesis, then implementatio
 
 NOTE: make sure the power supply connected the scintillators is on so signals are detected (power on the bottom left, then select the blue 5V button on the right). You can find more detailed instructions here: https://docs.google.com/document/d/1Hb8R0S-eUh0nreHfQq15rM5D3aqoJARjpncq5AhbR80/edit?usp=sharing 
 
-![avatar](Plots/fpga_connections.jpg)  
+![avatar](Plots/new_fpga.jpg)  
 
 ## Simulation:
 
