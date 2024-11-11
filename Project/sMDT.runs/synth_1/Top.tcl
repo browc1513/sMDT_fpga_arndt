@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -101,8 +99,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/sMDT/Downloads/Arty-A7-100-Master.xdc
-set_property used_in_implementation false [get_files C:/Users/sMDT/Downloads/Arty-A7-100-Master.xdc]
+read_xdc C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/constrs_1/new/Arty-A7-100-Master.xdc
+set_property used_in_implementation false [get_files C:/Users/sMDT/Documents/GitHub/sMDT_fpga_arndt/Project/sMDT.srcs/constrs_1/new/Arty-A7-100-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 

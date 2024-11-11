@@ -17,7 +17,6 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
--- checking that al files are updated in repo
 
 
 library IEEE;
