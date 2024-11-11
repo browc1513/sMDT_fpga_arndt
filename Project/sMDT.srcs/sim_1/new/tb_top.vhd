@@ -38,8 +38,6 @@ architecture Behavioral of tb_top is
   signal clk   : std_logic := '0';
   signal reset : std_logic := '0';
   signal JA    : std_logic_vector (1 downto 0):= (others =>'0'); --changed for two
-  signal an    : std_logic_vector (3 downto 0):= (others => '0');
-  signal sseg    : std_logic_vector (6 downto 0):= (others => '0');
   signal tx     : std_logic := '0';
   signal edge_detect_0 : std_logic_vector(1 downto 0) := (others => '0');
   signal edge_detect_1: std_logic_vector(1 downto 0) := (others => '0');
@@ -53,8 +51,6 @@ dut : entity work.top(Behavioral)
     clk=>clk, 
     reset=>reset, 
     JA=>JA,
-    an=>an,
-    sseg=>sseg,
     tx=>tx
     );
   stimulus:
